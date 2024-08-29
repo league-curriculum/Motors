@@ -23,9 +23,20 @@ extensions = [
 ]
 
 myst_enable_extensions = [
-    "dollarmath",
     "amsmath",
-    "colon_fence"
+    "attrs_inline",
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "fieldlist",
+    "html_admonition",
+    "html_image",
+    "linkify",
+    "replacements",
+    "smartquotes",
+    "strikethrough",
+    "substitution",
+    "tasklist",
 ]
 
 source_suffix = ['.rst', '.md']
