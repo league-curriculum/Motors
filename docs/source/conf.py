@@ -6,11 +6,11 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Python-Apprentice'
+project = 'Motors'
 copyright = '2024, The League'
 author = 'Eric Busboom'
 
-html_title = 'Python Apprentice'
+html_title = 'Motors Clinic'
 html_logo = 'https://images.jointheleague.org/logos/logo4.png'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

@@ -8,6 +8,8 @@ microcontroller to control them.
 ```{toctree}
 :maxdepth: 2
 
+getting_started.md
+setup_microbit.md
 motors.md
 course_outline.md
 
