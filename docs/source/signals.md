@@ -42,6 +42,9 @@ Using the Makecode editor, write this program. The  `analog write` block is in t
 
 ## Hardware Setup
 
+![breakout](https://images.jointheleague.org/motors/breakout_connect.png){.c600}
+
+
 ## Oscilloscope Trace
 
 When you run the program and look at the signal, this is what you will see: 
@@ -58,4 +61,5 @@ the time that the signal is at a high voltage. It should be 50%, because the
 value we set in the program , 512, is 50% of the way between the min value for
 the analog value of 0, and the maximum value of 1024. 
 
-
+We will be using this signal, which is called a "Square Wave" for controlling 
+the motors. 

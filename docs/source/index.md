@@ -10,8 +10,11 @@ microcontroller to control them.
 
 getting_started.md
 setup_microbit.md
-signals.md
 motors.md
+signals.md
+servos.md
+steppers.md
+brushed.md
 course_outline.md
 
 ```
