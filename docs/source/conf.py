@@ -56,4 +56,4 @@ html_css_files = [
     'css/custom.css',
 ]
 
-html_extra_path = ['html']
+html_extra_path = ['html', 'images']

@@ -10,6 +10,7 @@ microcontroller to control them.
 
 getting_started.md
 setup_microbit.md
+signals.md
 motors.md
 course_outline.md
 
