@@ -12,9 +12,9 @@ getting_started.md
 setup_microbit.md
 motors.md
 signals.md
+power.md
+brushed.md
 servos.md
 steppers.md
-brushed.md
-course_outline.md
 
 ```
