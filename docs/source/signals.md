@@ -44,4 +44,18 @@ Using the Makecode editor, write this program. The  `analog write` block is in t
 
 ## Oscilloscope Trace
 
+When you run the program and look at the signal, this is what you will see: 
+
 ![50_duty_trace](https://images.jointheleague.org/motors/50_duty_trace.png){.c600}
+
+The yellow line that goes up and down is the voltage on the `P0` pin of the
+Micro:bit. The bottom of the line is at 0 volts, and the top of the line is at
+about 3.3V. ( You can see these voltages in the white text in the background,
+for Vmax and Vmin )
+
+The "Dut" text in the background is the "Duty Cycle", which is the percentage of
+the time that the signal is at a high voltage. It should be 50%, because the
+value we set in the program , 512, is 50% of the way between the min value for
+the analog value of 0, and the maximum value of 1024. 
+
+
