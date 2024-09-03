@@ -8,6 +8,10 @@ One of the most common types of motors is the brushed continuous rotation DC mot
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GQatiB-JHdI?si=U-8nnhc32NCSErfj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+## Connections
 
-## Setup of Makecode
+![step_driver_cons](/images/hbridge-connections.png){.c400}
 
+## Program
+
+![step_driver_cons](/images/hbridge-program.png){.c400}

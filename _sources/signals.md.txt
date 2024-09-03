@@ -22,7 +22,7 @@ unplugging, you can send this message:
 
 A few minutes later, your friend arrives at your house, with your favorite snack. 
 
-( Cut and paste the Morse code into  the [Morse Code Translator](https://morsecode.world/international/translator.html) 
+( Cut and paste the Morse code into  the [Morse Code Translator](https://morsecode.world/international/translator.html) )ß
 to decode the message. 
 
 When you pluged the light into the socket, you produced a voltage at the light
