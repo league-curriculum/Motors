@@ -13,11 +13,5 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Change directory to docs
-      run: cd docs
-
-    - name: list dir
-      run: ls -la 
-
-    - name: Run make publish
-      run: make html
+    - name: Publish
+      run: cd docs && make html
