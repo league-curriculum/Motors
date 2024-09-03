@@ -8,6 +8,8 @@ accutate positioning.
 Our stepper motor is a very small one, and it also has a 1 to 10 gearbox, which
 means that we need to send 2,000 pulses for the shaft to move one rotation. 
 
+
+
 ## Connections
 
 Connect the stepper motor and stepper driver board like this:
@@ -90,3 +92,9 @@ If you want to understand how this works in more detail, this video will show
 you what is inside the stepper motor. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/15K9N1yVnhc?si=-cb7BW_i3sVBzvKy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Learn More
+
+Here is a video about how stepper motors work. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/09Mpkjcr0bo?si=bpWG_u25pt-ZeTkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

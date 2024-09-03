@@ -10,7 +10,6 @@ microcontroller to control them.
 
 getting_started.md
 setup_microbit.md
-motors.md
 signals.md
 power.md
 brushed.md
