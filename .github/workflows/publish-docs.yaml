@@ -25,6 +25,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
+        env
         cd docs
         make publish
 
