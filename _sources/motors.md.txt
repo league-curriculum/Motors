@@ -1,0 +1,17 @@
+
+# Continuous DC Motors
+
+One of the most common types of motors is the continuous rotation DC motor. These motors use the magnetic field created when electricity moves through a wire to push against a permanent magnet. Motors come in a tange of sizes, from microscopically tiny to enormous, but we will be using a common type of low voltage motors that is small, simple and inexpensive: 
+
+
+
+![motor](https://images.jointheleague.org/motors/small_dc_motor.png){.c200}
+
+
+
+:::{figure-md}
+![motor_diagram](https://upload.wikimedia.org/wikipedia/commons/7/73/Ejs_Open_Source_Direct_Current_Electrical_Motor_Model_Java_Applet_%28_DC_Motor_%29_80_degree_split_ring.gif){.c300}
+
+Motor diagram, from Wikipedia by [Lookang](http:/commons.wikimedia.org/w/index.php?title=User:Lookang&action=edit&redlink=1) 
+:::
+

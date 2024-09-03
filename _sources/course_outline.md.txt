@@ -1,0 +1,8 @@
+# Course Outline 
+
+
+Type of Motors
+
+* Continuous rotation motors
+* Stepper
+* Servo
