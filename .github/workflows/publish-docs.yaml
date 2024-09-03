@@ -16,5 +16,8 @@ jobs:
     - name: Change directory to docs
       run: cd docs
 
+    - name: list dir
+      run: ls -la 
+
     - name: Run make publish
-      run: make publish
+      run: make html
