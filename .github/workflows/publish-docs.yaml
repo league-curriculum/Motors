@@ -21,10 +21,10 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt 
 
-- name: Publish
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: |
-        cd docs
-        make publish
+    - name: Publish
+          env:
+            GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          run: |
+            cd docs
+            make publish
 
