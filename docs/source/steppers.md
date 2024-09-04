@@ -98,3 +98,6 @@ you what is inside the stepper motor.
 Here is a video about how stepper motors work. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/09Mpkjcr0bo?si=bpWG_u25pt-ZeTkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+Notes: This step patterns is full stepping
