@@ -15,3 +15,20 @@ One of the most common types of motors is the brushed continuous rotation DC mot
 ## Program
 
 ![step_driver_cons](/images/hbridge-program.png){.c400}
+
+
+## How it Works
+
+Our motor driver board has a cuircuit called an H-Bridge, because the cuircuit is compose of switches in the shape of an "H"
+
+When we turn pin A-1A on, the circuit turns on switches S1 and S4, which causes
+current to flow forward through the motor and the motor turns forward.  When
+A-1A is off and A-1B is on, the circuit turns on switch S2 and S3, the current
+flows backwards through the motor, and the motor turns backwards. 
+
+![H-Bridge](https://nathanmelenbrink.github.io/lab/arduino/H-bridge.png){.c300}
+
+<p style="text-align: center;">Image from of 
+<a href="https://nathanmelenbrink.github.io/lab/arduino/L9110.html">Driving a motor with the L9110 tutorial</a></p>
+
+

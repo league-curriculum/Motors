@@ -67,7 +67,7 @@ motor.
 ![28BYJ-48 Stepper Motor Coils](https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2021/07/28BYJ-48-stepper-motor-coils.png){.c300}
 
 
-<p style="text-align: center;">Image courtesy of 
+<p style="text-align: center;">Image from of 
 <a href="https://randomnerdtutorials.com/esp32-stepper-motor-28byj-48-uln2003/">Random Nerd Tutorials</a></p>
 
 
