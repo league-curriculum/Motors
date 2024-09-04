@@ -19,7 +19,8 @@ One of the most common types of motors is the brushed continuous rotation DC mot
 
 ## How it Works
 
-Our motor driver board has a cuircuit called an H-Bridge, because the cuircuit is compose of switches in the shape of an "H"
+Our motor driver board has a cuircuit called an H-Bridge, because the cuircuit
+is compose of switches in the shape of an "H"
 
 When we turn pin A-1A on, the circuit turns on switches S1 and S4, which causes
 current to flow forward through the motor and the motor turns forward.  When
