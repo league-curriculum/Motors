@@ -10,8 +10,8 @@ Then, plug in the microbit to your computer:
 ![mbsetup2](https://images.jointheleague.org/microbit/mb_setup_2.png){.c600}
 
 
-Then, visit the Micro:bit MakeCode project website:
-[https://makecode.microbit.org](https://makecode.microbit.org)
+Then, visit the Micro:bit MakeCode project website:  
+<a href="https://makecode.microbit.org" target="_blank" rel="noopener noreferrer">https://makecode.microbit.org</a>
 
 First, click on the <img class="inline" src="https://images.jointheleague.org/microbit/sign_in.png"> 
 button in the upper-right to create an account. 
@@ -48,6 +48,7 @@ Congratulations! You have created your first Micro:bit program.
 
 ```{admonition} Easter Eggs
 :class: tip
-Before you leave, read the Micro:bit program and see if there is anthing
+Before you leave, read the Micro:bit program and see if there is anything else the program does
+besides flash a heart. 
 
 ```

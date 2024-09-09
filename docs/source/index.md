@@ -11,7 +11,6 @@ microcontroller to control them.
 getting_started.md
 setup_microbit.md
 signals.md
-power.md
 brushed.md
 servos.md
 steppers.md

@@ -1,26 +1,23 @@
 # Brush Motors
 
 
-One of the most common types of motors is the brushed continuous rotation DC motor. These motors use the magnetic field created when electricity moves through a wire to push against a permanent magnet. Motors come in a tange of sizes, from microscopically tiny to enormous, but we will be using a common type of low voltage motors that is small, simple and inexpensive: 
+One of the most common types of motors is the brushed continuous rotation DC
+motor. These motors use the magnetic field created when electricity moves
+through a wire to push against a permanent magnet. Motors come in a range of
+sizes, from microscopically tiny to enormous, but we will be using a common type
+of low voltage motors that is small, simple and inexpensive: 
+
 ![motor](https://images.jointheleague.org/motors/small_dc_motor.png){.c200}
 
-## How they Work
+These motors will require a lot more power than our microcontroller can provide.
+Additionally, for use in a robot, we'd probably want the motor to be able to
+turn both forward and backwards, and turn at different speeds. A driver board
+can help us with all of these problems. 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GQatiB-JHdI?si=U-8nnhc32NCSErfj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-## Connections
-
-![step_driver_cons](/images/hbridge-connections.png){.c400}
-
-## Program
-
-![step_driver_cons](/images/hbridge-program.png){.c400}
-
-
-## How it Works
-
-Our motor driver board has a cuircuit called an H-Bridge, because the cuircuit
+Our motor driver board has a cuircuit called an H-Bridge, because the circuit
 is compose of switches in the shape of an "H"
+
+![driverboard](/images/hbridge-top.png){.c200}
 
 When we turn pin A-1A on, the circuit turns on switches S1 and S4, which causes
 current to flow forward through the motor and the motor turns forward.  When
@@ -33,3 +30,22 @@ flows backwards through the motor, and the motor turns backwards.
 <a href="https://nathanmelenbrink.github.io/lab/arduino/L9110.html">Driving a motor with the L9110 tutorial</a></p>
 
 
+## Connections
+
+Our driver board has two h-bridges on it, which is very useful for a robot with
+two wheels. However, we will only us one of them. Using dupont wires, make these connections
+
+
+![step_driver_cons](/images/hbridge-connections.png){.c400}
+
+## Program
+
+![step_driver_cons](/images/hbridge-program.png){.c400}
+
+
+## How it Works
+
+
+If you'd like to know about how the brushed motor works, this video will explain all of the details. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GQatiB-JHdI?si=U-8nnhc32NCSErfj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

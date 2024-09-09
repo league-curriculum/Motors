@@ -1,6 +1,6 @@
 # Getting Started 
 
-## Contents
+## Materials
 
 To complete the lessons, you will need a Microbit microcontroler and USB cables,
 and a selection of motors and motor controllers. You should have these components: 

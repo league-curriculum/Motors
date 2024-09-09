@@ -29,4 +29,4 @@ publish:
 	@ghp-import -s -n -p --cname $(CNAME) -f ./build/html 
 
 livehtml:
-	sphinx-autobuild --open-browser "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) 
+	sphinx-autobuild --open-browser "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) --host 0.0.0.0 --port 8000
