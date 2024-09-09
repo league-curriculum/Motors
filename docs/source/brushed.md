@@ -15,7 +15,7 @@ turn both forward and backwards, and turn at different speeds. A driver board
 can help us with all of these problems. 
 
 Our motor driver board has a cuircuit called an H-Bridge, because the circuit
-is compose of switches in the shape of an "H"
+is composed of switches in the shape of an "H"
 
 ![driverboard](/images/hbridge-top.png){.c200}
 
@@ -29,18 +29,34 @@ flows backwards through the motor, and the motor turns backwards.
 <p style="text-align: center;">Image from of 
 <a href="https://nathanmelenbrink.github.io/lab/arduino/L9110.html">Driving a motor with the L9110 tutorial</a></p>
 
-
 ## Connections
 
 Our driver board has two h-bridges on it, which is very useful for a robot with
-two wheels. However, we will only us one of them. Using dupont wires, make these connections
+two wheels. However, we will only us one of them. Using dupont wires, make these
+connections: 
+
+* A-1A to P0 signal ( yellow )
+* A-1B to P1 signal (yellow )
+* Vcc to P0 power ( red)
+* Gnd to P0 ground. ( black )
+
+Then, connect the red and black motor leads to the "motor a" terminals. It
+doesn't matter which side the red and black go on; swapping them will make the
+motor turn in the other direction when you program it to go forward. You may
+have to use a breadboard to make the connections between male Dupont wires. 
 
 
 ![step_driver_cons](/images/hbridge-connections.png){.c400}
 
 ## Program
 
-![step_driver_cons](/images/hbridge-program.png){.c400}
+Here is a suggested program, but you can write a different program if you'd
+like. The important part is that to go one direction, write a 0 to P0 and 1 to
+P1. To reverse, write a 1 to P0 and a 0 to P1.
+
+![step_driver_cons](/images/hbridge-buttons-program.png){.c400}
+
+( You can import this program from Github with the url https://github.com/League-Microbit/H-Bridge-Control.git)
 
 
 ## How it Works

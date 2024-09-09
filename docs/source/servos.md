@@ -10,17 +10,17 @@ They are very inexpensive and easy to use, so they are common in hobby
 projects. While there are some industrial versions, their inaccuracy makes them
 rare in commercial products. 
 
-# Connections
+## Connections
 
 
-# Program
+## Program
 
 First, install the servo extension into Makecode:
 
 ![foo](/images/servo-sweep.png)
 
 
-# Learn More
+## Learn More
 
 If you are interested in the details of how a hobby servo, this video offers a
 complete teardown and explaination of the parts. 
