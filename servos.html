@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Steppers" href="steppers.html" /><link rel="prev" title="Brush Motors" href="brushed.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
         <title>Hobby Servos - Motors Clinic</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
@@ -181,7 +181,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -207,8 +207,7 @@
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_microbit.html">Setup Microbit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="power.html">Connecting Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals and Power</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brushed.html">Brush Motors</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Hobby Servos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="steppers.html">Steppers</a></li>
@@ -246,7 +245,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -254,14 +253,29 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="hobby-servos">
 <h1>Hobby Servos<a class="headerlink" href="#hobby-servos" title="Link to this heading">¶</a></h1>
-<p>A hobby servo is build from a regular brushed motor,  gear train, a position sensor,
-and som internal circuitry. It will only move up to 180 degrees, but they
-are very inexpensive and easy to use, so they are common in hobby projects. WHile there are
-some industrial versions, their inaccuracy makes them rare in commercial products.</p>
 <p><img alt="motor" class="c300" src="https://images.jointheleague.org/motors/hobby_servo.png" /></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xB_4KB72res?si=U_3K69sjkFg1TIGI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>A hobby servo is built from a regular brushed motor,  gear train, a position
+sensor, and som internal circuitry. It will only move back and forth 180
+degrees; it cant turn around continuously. This makes them useful for moving
+joints on a robot arm or flaps on an airplane, but not for wheels on a car.
+They are very inexpensive and easy to use, so they are common in hobby
+projects. While there are some industrial versions, their inaccuracy makes them
+rare in commercial products.</p>
+<section id="connections">
+<h2>Connections<a class="headerlink" href="#connections" title="Link to this heading">¶</a></h2>
+</section>
+<section id="program">
+<h2>Program<a class="headerlink" href="#program" title="Link to this heading">¶</a></h2>
+<p>First, install the servo extension into Makecode:</p>
 <p><img alt="foo" src="_images/servo-sweep.png" /></p>
+</section>
+<section id="learn-more">
+<h2>Learn More<a class="headerlink" href="#learn-more" title="Link to this heading">¶</a></h2>
+<p>If you are interested in the details of how a hobby servo, this video offers a
+complete teardown and explaination of the parts.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xB_4KB72res?si=U_3K69sjkFg1TIGI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <p>Yeah Servos!</p>
+</section>
 </section>
 
         </article>
@@ -299,7 +313,7 @@ some industrial versions, their inaccuracy makes them rare in commercial product
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Sep 03, 2024 14:35</div>
+              Last updated on Sep 09, 2024 09:04</div>
           </div>
           <div class="right-details">
             
@@ -308,14 +322,35 @@ some industrial versions, their inaccuracy makes them rare in commercial product
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Hobby Servos</a><ul>
+<li><a class="reference internal" href="#connections">Connections</a></li>
+<li><a class="reference internal" href="#program">Program</a></li>
+<li><a class="reference internal" href="#learn-more">Learn More</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
   </div>
 </div><script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
     <script>let toggleHintShow = 'Click to show';</script>

@@ -3,9 +3,9 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Hobby Servos" href="servos.html" /><link rel="prev" title="Connecting Power" href="power.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Hobby Servos" href="servos.html" /><link rel="prev" title="Signals and Power" href="signals.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
         <title>Brush Motors - Motors Clinic</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
@@ -207,8 +207,7 @@
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_microbit.html">Setup Microbit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="power.html">Connecting Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals and Power</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Brush Motors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="servos.html">Hobby Servos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="steppers.html">Steppers</a></li>
@@ -254,19 +253,55 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="brush-motors">
 <h1>Brush Motors<a class="headerlink" href="#brush-motors" title="Link to this heading">¶</a></h1>
-<p>One of the most common types of motors is the brushed continuous rotation DC motor. These motors use the magnetic field created when electricity moves through a wire to push against a permanent magnet. Motors come in a tange of sizes, from microscopically tiny to enormous, but we will be using a common type of low voltage motors that is small, simple and inexpensive:
-<img alt="motor" class="c200" src="https://images.jointheleague.org/motors/small_dc_motor.png" /></p>
-<section id="how-they-work">
-<h2>How they Work<a class="headerlink" href="#how-they-work" title="Link to this heading">¶</a></h2>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GQatiB-JHdI?si=U-8nnhc32NCSErfj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</section>
+<p>One of the most common types of motors is the brushed continuous rotation DC
+motor. These motors use the magnetic field created when electricity moves
+through a wire to push against a permanent magnet. Motors come in a range of
+sizes, from microscopically tiny to enormous, but we will be using a common type
+of low voltage motors that is small, simple and inexpensive:</p>
+<p><img alt="motor" class="c200" src="https://images.jointheleague.org/motors/small_dc_motor.png" /></p>
+<p>These motors will require a lot more power than our microcontroller can provide.
+Additionally, for use in a robot, we’d probably want the motor to be able to
+turn both forward and backwards, and turn at different speeds. A driver board
+can help us with all of these problems.</p>
+<p>Our motor driver board has a cuircuit called an H-Bridge, because the circuit
+is composed of switches in the shape of an “H”</p>
+<p><img alt="driverboard" class="c200" src="_images/hbridge-top.png" /></p>
+<p>When we turn pin A-1A on, the circuit turns on switches S1 and S4, which causes
+current to flow forward through the motor and the motor turns forward.  When
+A-1A is off and A-1B is on, the circuit turns on switch S2 and S3, the current
+flows backwards through the motor, and the motor turns backwards.</p>
+<p><img alt="H-Bridge" class="c300" src="https://nathanmelenbrink.github.io/lab/arduino/H-bridge.png" /></p>
+<p style="text-align: center;">Image from of 
+<a href="https://nathanmelenbrink.github.io/lab/arduino/L9110.html">Driving a motor with the L9110 tutorial</a></p>
 <section id="connections">
 <h2>Connections<a class="headerlink" href="#connections" title="Link to this heading">¶</a></h2>
+<p>Our driver board has two h-bridges on it, which is very useful for a robot with
+two wheels. However, we will only us one of them. Using dupont wires, make these
+connections:</p>
+<ul class="simple">
+<li><p>A-1A to P0 signal ( yellow )</p></li>
+<li><p>A-1B to P1 signal (yellow )</p></li>
+<li><p>Vcc to P0 power ( red)</p></li>
+<li><p>Gnd to P0 ground. ( black )</p></li>
+</ul>
+<p>Then, connect the red and black motor leads to the “motor a” terminals. It
+doesn’t matter which side the red and black go on; swapping them will make the
+motor turn in the other direction when you program it to go forward. You may
+have to use a breadboard to make the connections between male Dupont wires.</p>
 <p><img alt="step_driver_cons" class="c400" src="_images/hbridge-connections.png" /></p>
 </section>
 <section id="program">
 <h2>Program<a class="headerlink" href="#program" title="Link to this heading">¶</a></h2>
-<p><img alt="step_driver_cons" class="c400" src="_images/hbridge-program.png" /></p>
+<p>Here is a suggested program, but you can write a different program if you’d
+like. The important part is that to go one direction, write a 0 to P0 and 1 to
+P1. To reverse, write a 1 to P0 and a 0 to P1.</p>
+<p><img alt="step_driver_cons" class="c400" src="_images/hbridge-buttons-program.png" /></p>
+<p>( You can import this program from Github with the url <a class="reference external" href="https://github.com/League-Microbit/H-Bridge-Control.git">https://github.com/League-Microbit/H-Bridge-Control.git</a>)</p>
+</section>
+<section id="how-it-works">
+<h2>How it Works<a class="headerlink" href="#how-it-works" title="Link to this heading">¶</a></h2>
+<p>If you’d like to know about how the brushed motor works, this video will explain all of the details.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GQatiB-JHdI?si=U-8nnhc32NCSErfj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </section>
 </section>
 
@@ -284,14 +319,14 @@
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="power.html">
+          <a class="prev-page" href="signals.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Connecting Power</div>
+                <div class="title">Signals and Power</div>
                 
               </div>
             </a>
@@ -305,7 +340,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Sep 03, 2024 14:35</div>
+              Last updated on Sep 09, 2024 09:04</div>
           </div>
           <div class="right-details">
             
@@ -327,9 +362,9 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Brush Motors</a><ul>
-<li><a class="reference internal" href="#how-they-work">How they Work</a></li>
 <li><a class="reference internal" href="#connections">Connections</a></li>
 <li><a class="reference internal" href="#program">Program</a></li>
+<li><a class="reference internal" href="#how-it-works">How it Works</a></li>
 </ul>
 </li>
 </ul>
@@ -342,7 +377,7 @@
     </aside>
   </div>
 </div><script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
     <script>let toggleHintShow = 'Click to show';</script>

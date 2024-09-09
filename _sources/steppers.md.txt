@@ -67,7 +67,7 @@ motor.
 ![28BYJ-48 Stepper Motor Coils](https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2021/07/28BYJ-48-stepper-motor-coils.png){.c300}
 
 
-<p style="text-align: center;">Image courtesy of 
+<p style="text-align: center;">Image from of 
 <a href="https://randomnerdtutorials.com/esp32-stepper-motor-28byj-48-uln2003/">Random Nerd Tutorials</a></p>
 
 
@@ -98,3 +98,6 @@ you what is inside the stepper motor.
 Here is a video about how stepper motors work. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/09Mpkjcr0bo?si=bpWG_u25pt-ZeTkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+Notes: This step patterns is full stepping
