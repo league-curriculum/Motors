@@ -59,6 +59,10 @@ P1. To reverse, write a 1 to P0 and a 0 to P1.
 ( You can import this program from Github with the url https://github.com/League-Microbit/H-Bridge-Control.git)
 
 
+After downloading the program, press the A button to turn the motor one
+direction, the B button to turn it the other, and the logo  ( the robot face
+between the buttons ) to stop the motors.
+
 ## How it Works
 
 

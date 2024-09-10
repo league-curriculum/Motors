@@ -3,8 +3,8 @@
 ![motor](https://images.jointheleague.org/motors/hobby_servo.png){.c300}
 
 A hobby servo is built from a regular brushed motor,  gear train, a position
-sensor, and som internal circuitry. It will only move back and forth 180
-degrees; it cant turn around continuously. This makes them useful for moving
+sensor, and some internal circuitry. It will only move back and forth 180
+degrees; it can't turn around continuously. This makes them useful for moving
 joints on a robot arm or flaps on an airplane, but not for wheels on a car.
 They are very inexpensive and easy to use, so they are common in hobby
 projects. While there are some industrial versions, their inaccuracy makes them
@@ -12,12 +12,18 @@ rare in commercial products.
 
 ## Connections
 
+Servo connections are super easy; just plug the three position plug on the end
+of the servo right onto the three pins for Pin 0 on the breakout board. Be sure
+that the brown servo wire is ground ( black pin ) and the orange servo wire is
+the signal ( yellow ). 
+
+![servo-connections](/images/servo-connections.png)
 
 ## Program
 
 First, install the servo extension into Makecode:
 
-![foo](/images/servo-sweep.png)
+![sweep_program](/images/servo-sweep.png)
 
 
 ## Learn More
