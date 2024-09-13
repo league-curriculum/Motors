@@ -60,7 +60,9 @@ In the block "set delay between steps to" change th value from 0ms to 500ms. The
 "ms" means "miliseconds" or 1/1000 of a second. So, 500/1000 seconds is half a
 second. 
 
-After making the change, download the program again and observe the LEDs. Let's
+After making the change, download the program again and observe the LEDs. Now that 
+we've increased the delay, we can see the patterns of the LEDs, which indicate which 
+magnetic coils are being activated to move the motor one direction or the other.  Let's
 figure out what these lights mean by looking at the wiring diagram for the
 motor. 
 
