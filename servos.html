@@ -255,26 +255,34 @@
 <h1>Hobby Servos<a class="headerlink" href="#hobby-servos" title="Link to this heading">¶</a></h1>
 <p><img alt="motor" class="c300" src="https://images.jointheleague.org/motors/hobby_servo.png" /></p>
 <p>A hobby servo is built from a regular brushed motor,  gear train, a position
-sensor, and som internal circuitry. It will only move back and forth 180
-degrees; it cant turn around continuously. This makes them useful for moving
+sensor, and some internal circuitry. It will only move back and forth 180
+degrees; it can’t turn around continuously. This makes them useful for moving
 joints on a robot arm or flaps on an airplane, but not for wheels on a car.
 They are very inexpensive and easy to use, so they are common in hobby
 projects. While there are some industrial versions, their inaccuracy makes them
 rare in commercial products.</p>
 <section id="connections">
 <h2>Connections<a class="headerlink" href="#connections" title="Link to this heading">¶</a></h2>
+<p>Servo connections are super easy; just plug the three position plug on the end
+of the servo right onto the three pins for Pin 0 on the breakout board. Be sure
+that the brown servo wire is ground ( black pin ) and the orange servo wire is
+the signal ( yellow ).</p>
+<p><img alt="servo-connections" src="_images/servo-connections.png" /></p>
 </section>
 <section id="program">
 <h2>Program<a class="headerlink" href="#program" title="Link to this heading">¶</a></h2>
 <p>First, install the servo extension into Makecode:</p>
-<p><img alt="foo" src="_images/servo-sweep.png" /></p>
+<p><img alt="servo_extension" src="_images/servo-extension.png" /></p>
+<p>Then, create a new program like this one:</p>
+<p><img alt="sweep_program" src="_images/servo-sweep.png" /></p>
+<p>Your servo should now be sweeping back and forth through the
+full range of its motion, 180 degrees.</p>
 </section>
 <section id="learn-more">
 <h2>Learn More<a class="headerlink" href="#learn-more" title="Link to this heading">¶</a></h2>
 <p>If you are interested in the details of how a hobby servo, this video offers a
 complete teardown and explaination of the parts.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xB_4KB72res?si=U_3K69sjkFg1TIGI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<p>Yeah Servos!</p>
 </section>
 </section>
 
@@ -313,7 +321,7 @@ complete teardown and explaination of the parts.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Sep 09, 2024 09:04</div>
+              Last updated on Sep 13, 2024 16:07</div>
           </div>
           <div class="right-details">
             
