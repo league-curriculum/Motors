@@ -279,11 +279,17 @@ flows backwards through the motor, and the motor turns backwards.</p>
 two wheels. However, we will only us one of them. Using dupont wires, make these
 connections:</p>
 <ul class="simple">
-<li><p>A-1A to P0 signal ( yellow )</p></li>
-<li><p>A-1B to P1 signal (yellow )</p></li>
-<li><p>Vcc to P0 power ( red)</p></li>
+<li><p>A-1A ( or B-1A ) to P0 signal ( yellow )</p></li>
+<li><p>A-1B ( or B-1B) to P1 signal (yellow )</p></li>
 <li><p>Gnd to P0 ground. ( black )</p></li>
+<li><p>Vcc to P0 power ( red)</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Very Important! Connect the power pin  Vcc <em>last</em>, and disconnect it <em>first</em>. Do not
+connect or disconnect the signal pins while power is applied. Violating these rules can
+destroy the driver.</p>
+</div>
 <p>Then, connect the red and black motor leads to the “motor a” terminals. It
 doesn’t matter which side the red and black go on; swapping them will make the
 motor turn in the other direction when you program it to go forward. You may
@@ -292,9 +298,14 @@ have to use a breadboard to make the connections between male Dupont wires.</p>
 </section>
 <section id="program">
 <h2>Program<a class="headerlink" href="#program" title="Link to this heading">¶</a></h2>
+<p>If you previous program – the Python program that changes the duty cycle – is still
+running, your motor may start moving, and speed up or slow down befor starting again. This is
+the result of the changing duty cycle setting the speed of the motor.</p>
 <p>Here is a suggested program, but you can write a different program if you’d
 like. The important part is that to go one direction, write a 0 to P0 and 1 to
-P1. To reverse, write a 1 to P0 and a 0 to P1.</p>
+P1. To reverse, write a 1 to P0 and a 0 to P1. This program will have a constant
+speed, but you can modify it with <code class="docutils literal notranslate"><span class="pre">analog</span> <span class="pre">write</span></code> to drive the motor with a
+variable speed.</p>
 <p><img alt="step_driver_cons" class="c400" src="_images/hbridge-buttons-program.png" /></p>
 <p>( You can import this program from Github with the url <a class="reference external" href="https://github.com/League-Microbit/H-Bridge-Control.git">https://github.com/League-Microbit/H-Bridge-Control.git</a>)</p>
 <p>After downloading the program, press the A button to turn the motor one
@@ -343,7 +354,7 @@ between the buttons ) to stop the motors.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Sep 13, 2024 16:07</div>
+              Last updated on Sep 13, 2024 21:56</div>
           </div>
           <div class="right-details">
             
