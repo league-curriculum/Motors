@@ -48,6 +48,7 @@ Then, enter in this program:
 
 The "show image" block is under "Advanced > Images"
 
+
 After you download the program, you should see the shaft of the stepper motor
 moving back and forth. 
 

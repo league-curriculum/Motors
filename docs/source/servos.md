@@ -29,6 +29,8 @@ Then, create a new program like this one:
 
 ![sweep_program](/images/servo-sweep.png)
 
+You can import this program from https://github.com/League-Microbit/Stepper-Sweep.git.
+
 Your servo should now be sweeping back and forth through the
 full range of its motion, 180 degrees. 
 

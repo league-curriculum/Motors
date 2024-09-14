@@ -35,24 +35,35 @@ Our driver board has two h-bridges on it, which is very useful for a robot with
 two wheels. However, we will only us one of them. Using dupont wires, make these
 connections: 
 
-* A-1A to P0 signal ( yellow )
-* A-1B to P1 signal (yellow )
-* Vcc to P0 power ( red)
+* A-1A ( or B-1A ) to P0 signal ( yellow )
+* A-1B ( or B-1B) to P1 signal (yellow )
 * Gnd to P0 ground. ( black )
+* Vcc to P0 power ( red)
+
+```{warning}
+Very Important! Connect the power pin  Vcc *last*, and disconnect it *first*. Do not
+connect or disconnect the signal pins while power is applied. Violating these rules can
+destroy the driver. 
+```
 
 Then, connect the red and black motor leads to the "motor a" terminals. It
 doesn't matter which side the red and black go on; swapping them will make the
 motor turn in the other direction when you program it to go forward. You may
 have to use a breadboard to make the connections between male Dupont wires. 
 
-
 ![step_driver_cons](/images/hbridge-connections.png){.c400}
 
 ## Program
 
+If you previous program -- the Python program that changes the duty cycle -- is still
+running, your motor may start moving, and speed up or slow down befor starting again. This is
+the result of the changing duty cycle setting the speed of the motor. 
+
 Here is a suggested program, but you can write a different program if you'd
 like. The important part is that to go one direction, write a 0 to P0 and 1 to
-P1. To reverse, write a 1 to P0 and a 0 to P1.
+P1. To reverse, write a 1 to P0 and a 0 to P1. This program will have a constant
+speed, but you can modify it with `analog write` to drive the motor with a
+variable speed. 
 
 ![step_driver_cons](/images/hbridge-buttons-program.png){.c400}
 
