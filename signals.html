@@ -366,6 +366,23 @@ the analog value of 0, and the maximum value of 1024.</p>
 <p>We will be using this signal, which is called a “Square Wave” for controlling
 the motors.</p>
 </section>
+<section id="changing-the-duty-cycle">
+<h2>Changing the Duty Cycle<a class="headerlink" href="#changing-the-duty-cycle" title="Link to this heading">¶</a></h2>
+<p>Unlike the signal un our oscilloscope, the duty cycle of a motor control
+signal will change, to change the speed or position of the motor. Lets update
+our program to change the signal.</p>
+<p>Switch your program to Python mode from the switch at the top of the screen, then edit the program
+to this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_forever</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">pins</span><span class="o">.</span><span class="n">analog_write_pin</span><span class="p">(</span><span class="n">AnalogPin</span><span class="o">.</span><span class="n">P0</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+        <span class="n">basic</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">basic</span><span class="o">.</span><span class="n">forever</span><span class="p">(</span><span class="n">on_forever</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After making this change, you will see the the ducty cycle change from 0% to
+100%.</p>
+</section>
 </section>
 
         </article>
@@ -403,7 +420,7 @@ the motors.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Sep 09, 2024 09:04</div>
+              Last updated on Sep 13, 2024 20:59</div>
           </div>
           <div class="right-details">
             
@@ -429,6 +446,7 @@ the motors.</p>
 <li><a class="reference internal" href="#program">Program</a></li>
 <li><a class="reference internal" href="#hardware-setup">Hardware Setup</a></li>
 <li><a class="reference internal" href="#oscilloscope-trace">Oscilloscope Trace</a></li>
+<li><a class="reference internal" href="#changing-the-duty-cycle">Changing the Duty Cycle</a></li>
 </ul>
 </li>
 </ul>

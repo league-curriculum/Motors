@@ -140,3 +140,23 @@ the analog value of 0, and the maximum value of 1024.
 
 We will be using this signal, which is called a "Square Wave" for controlling 
 the motors. 
+
+## Changing the Duty Cycle
+
+Unlike the signal un our oscilloscope, the duty cycle of a motor control
+signal will change, to change the speed or position of the motor. Lets update
+our program to change the signal. 
+
+Switch your program to Python mode from the switch at the top of the screen, then edit the program
+to this: 
+
+```python 
+def on_forever():
+    for index in range(5):
+        pins.analog_write_pin(AnalogPin.P0, index)
+        basic.pause(10)
+basic.forever(on_forever)
+```
+
+After making this change, you will see the the ducty cycle change from 0% to
+100%. 
