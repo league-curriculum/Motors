@@ -10,7 +10,9 @@ Then, plug in the microbit to your computer:
 ![mbsetup2](https://images.jointheleague.org/microbit/mb_setup_2.png){.c600}
 
 
-Then, visit the Micro:bit MakeCode project website:  
+Then, **using the Chrome or Chromium browser**, visit the Micro:bit MakeCode
+project website:  
+
 <a href="https://makecode.microbit.org" target="_blank" rel="noopener noreferrer">https://makecode.microbit.org</a>
 
 First, click on the <img class="inline" src="https://images.jointheleague.org/microbit/sign_in.png"> 

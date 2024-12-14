@@ -158,5 +158,5 @@ def on_forever():
 basic.forever(on_forever)
 ```
 
-After making this change, you will see the the ducty cycle change from 0% to
+After making this change, you will see the the duty cycle change from 0% to
 100%. 
