@@ -5,14 +5,14 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Hobby Servos" href="servos.html" /><link rel="prev" title="Signals and Power" href="signals.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
         <title>Brush Motors - Motors Clinic</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e3885b36" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=c57e740e" />
     
     
 
@@ -269,11 +269,14 @@ turn both forward and backwards, and turn at different speeds. A driver board
 can help us with all of these problems.</p>
 <p>Our motor driver board has a cuircuit called an H-Bridge, because the circuit
 is composed of switches in the shape of an “H”</p>
-<p><img alt="driverboard" class="c200" src="_images/hbridge-top.png" /></p>
-<p>When we turn pin A-1A on, the circuit turns on switches S1 and S4, which causes
-current to flow forward through the motor and the motor turns forward.  When
-A-1A is off and A-1B is on, the circuit turns on switch S2 and S3, the current
-flows backwards through the motor, and the motor turns backwards.</p>
+<p><img alt="h_bridge" class="c200" src="_images/h-bridge1508A.png" /></p>
+<p>This driver has two H-bridges on it. The inputs <code class="docutils literal notranslate"><span class="pre">INT1</span></code> and <code class="docutils literal notranslate"><span class="pre">INT2</span></code> control
+Motor A, an  <code class="docutils literal notranslate"><span class="pre">INT3</span></code> and <code class="docutils literal notranslate"><span class="pre">INT4</span></code> control Motor B.</p>
+<p>When we turn pin <code class="docutils literal notranslate"><span class="pre">INT1</span></code> on anbddd <code class="docutils literal notranslate"><span class="pre">INT2</span></code> off, the circuit turns on switches S1
+and S4, which causes current to flow forward through the motor and the motor
+turns forward.  When <code class="docutils literal notranslate"><span class="pre">INT1</span></code> is off and <code class="docutils literal notranslate"><span class="pre">INT2</span></code> is on, the circuit turns on switch
+S2 and S3, the current flows backwards through the motor, and the motor turns
+backwards.</p>
 <p><img alt="H-Bridge" class="c300" src="https://nathanmelenbrink.github.io/lab/arduino/H-bridge.png" /></p>
 <p style="text-align: center;">Image from of 
 <a href="https://nathanmelenbrink.github.io/lab/arduino/L9110.html">Driving a motor with the L9110 tutorial</a></p>
@@ -283,8 +286,8 @@ flows backwards through the motor, and the motor turns backwards.</p>
 two wheels. However, we will only us one of them. Using dupont wires, make these
 connections:</p>
 <ul class="simple">
-<li><p>A-1A ( or B-1A ) to P0 signal ( yellow )</p></li>
-<li><p>A-1B ( or B-1B) to P1 signal (yellow )</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INT1</span></code> ( or <code class="docutils literal notranslate"><span class="pre">INT3</span></code> ) to P0 signal ( yellow )</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INT2</span></code> ( or <code class="docutils literal notranslate"> <span class="pre">INT4</span></code> zxsdx ) to P1 signal (yellow )</p></li>
 <li><p>Gnd to P0 ground. ( black )</p></li>
 <li><p>Vcc to P0 power ( red)</p></li>
 </ul>
@@ -293,12 +296,13 @@ connections:</p>
 <p>Very Important! Connect the power pin  Vcc <em>last</em>, and disconnect it <em>first</em>. Do not
 connect or disconnect the signal pins while power is applied. Violating these rules can
 destroy the driver.</p>
+<p><strong>It would be best to unplug both USB cables while connecting or disconnecting the H-Bridge</strong></p>
 </div>
 <p>Then, connect the red and black motor leads to the “motor a” terminals. It
 doesn’t matter which side the red and black go on; swapping them will make the
 motor turn in the other direction when you program it to go forward. You may
 have to use a breadboard to make the connections between male Dupont wires.</p>
-<p><img alt="step_driver_cons" class="c400" src="_images/hbridge-connections.png" /></p>
+<p><img alt="step_driver_cons" class="c400" src="_images/hbridge-1508A-connections.png" /></p>
 </section>
 <section id="program">
 <h2>Program<a class="headerlink" href="#program" title="Link to this heading">¶</a></h2>
@@ -310,11 +314,16 @@ like. The important part is that to go one direction, write a 0 to P0 and 1 to
 P1. To reverse, write a 1 to P0 and a 0 to P1. This program will have a constant
 speed, but you can modify it with <code class="docutils literal notranslate"><span class="pre">analog</span> <span class="pre">write</span></code> to drive the motor with a
 variable speed.</p>
-<p><img alt="step_driver_cons" class="c400" src="_images/hbridge-buttons-program.png" /></p>
+<p><img alt="step_driver_cons" class="c600" src="_images/hbridge-buttons-program.png" /></p>
 <p>( You can import this program from Github with the url <a class="reference external" href="https://github.com/League-Microbit/H-Bridge-Control.git">https://github.com/League-Microbit/H-Bridge-Control.git</a>)</p>
 <p>After downloading the program, press the A button to turn the motor one
 direction, the B button to turn it the other, and the logo  ( the robot face
 between the buttons ) to stop the motors.</p>
+<p>Here is another program that shows how to change the speed of the motor, using
+the <code class="docutils literal notranslate"><span class="pre">analog</span> <span class="pre">write</span></code> command.</p>
+<p>( You can import this program from <a class="reference external" href="https://github.com/League-Microbit/duty-cycle-buttons">https://github.com/League-Microbit/duty-cycle-buttons</a> )</p>
+<p><img alt="duty-cycle" class="c600" src="_images/duty-cycle-program.png" /></p>
+<p>When you press the A or B buttons, this program will write a square wave duty cycle signal to the h-bridge, using the <code class="docutils literal notranslate"><span class="pre">analog</span> <span class="pre">write</span></code> feature, which will start the motor running slowly, then speed it up.</p>
 </section>
 <section id="how-it-works">
 <h2>How it Works<a class="headerlink" href="#how-it-works" title="Link to this heading">¶</a></h2>
@@ -358,7 +367,7 @@ between the buttons ) to stop the motors.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Sep 21, 2024 12:56</div>
+              Last updated on Dec 13, 2024 21:38</div>
           </div>
           <div class="right-details">
             <div class="icons">
@@ -402,7 +411,7 @@ between the buttons ) to stop the motors.</p>
     </aside>
   </div>
 </div><script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
     <script>let toggleHintShow = 'Click to show';</script>
