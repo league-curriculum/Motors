@@ -17,12 +17,16 @@ can help us with all of these problems.
 Our motor driver board has a cuircuit called an H-Bridge, because the circuit
 is composed of switches in the shape of an "H"
 
-![driverboard](/images/hbridge-top.png){.c200}
+![h_bridge](/images/h-bridge1508A.png){.c200}
 
-When we turn pin A-1A on, the circuit turns on switches S1 and S4, which causes
-current to flow forward through the motor and the motor turns forward.  When
-A-1A is off and A-1B is on, the circuit turns on switch S2 and S3, the current
-flows backwards through the motor, and the motor turns backwards. 
+This driver has two H-bridges on it. The inputs `INT1` and `INT2` control 
+Motor A, an  `INT3` and `INT4` control Motor B. 
+
+When we turn pin `INT1` on anbddd `INT2` off, the circuit turns on switches S1
+and S4, which causes current to flow forward through the motor and the motor
+turns forward.  When `INT1` is off and `INT2` is on, the circuit turns on switch
+S2 and S3, the current flows backwards through the motor, and the motor turns
+backwards. 
 
 ![H-Bridge](https://nathanmelenbrink.github.io/lab/arduino/H-bridge.png){.c300}
 
@@ -30,6 +34,7 @@ flows backwards through the motor, and the motor turns backwards.
 <a href="https://nathanmelenbrink.github.io/lab/arduino/L9110.html">Driving a motor with the L9110 tutorial</a></p>
 
 ## Connections
+
 
 Our driver board has two h-bridges on it, which is very useful for a robot with
 two wheels. However, we will only us one of them. Using dupont wires, make these
