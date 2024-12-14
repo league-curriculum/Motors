@@ -271,8 +271,8 @@ can help us with all of these problems.</p>
 is composed of switches in the shape of an “H”</p>
 <p><img alt="h_bridge" class="c200" src="_images/h-bridge1508A.png" /></p>
 <p>This driver has two H-bridges on it. The inputs <code class="docutils literal notranslate"><span class="pre">INT1</span></code> and <code class="docutils literal notranslate"><span class="pre">INT2</span></code> control
-Motor A, an  <code class="docutils literal notranslate"><span class="pre">INT3</span></code> and <code class="docutils literal notranslate"><span class="pre">INT4</span></code> control Motor B.</p>
-<p>When we turn pin <code class="docutils literal notranslate"><span class="pre">INT1</span></code> on anbddd <code class="docutils literal notranslate"><span class="pre">INT2</span></code> off, the circuit turns on switches S1
+Motor A, and <code class="docutils literal notranslate"><span class="pre">INT3</span></code> and <code class="docutils literal notranslate"><span class="pre">INT4</span></code> control Motor B.</p>
+<p>When we turn pin <code class="docutils literal notranslate"><span class="pre">INT1</span></code> on and <code class="docutils literal notranslate"><span class="pre">INT2</span></code> off, the circuit turns on switches S1
 and S4, which causes current to flow forward through the motor and the motor
 turns forward.  When <code class="docutils literal notranslate"><span class="pre">INT1</span></code> is off and <code class="docutils literal notranslate"><span class="pre">INT2</span></code> is on, the circuit turns on switch
 S2 and S3, the current flows backwards through the motor, and the motor turns
@@ -288,8 +288,8 @@ connections:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">INT1</span></code> ( or <code class="docutils literal notranslate"><span class="pre">INT3</span></code> ) to P0 signal ( yellow )</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">INT2</span></code> ( or <code class="docutils literal notranslate"> <span class="pre">INT4</span></code> zxsdx ) to P1 signal (yellow )</p></li>
-<li><p>Gnd to P0 ground. ( black )</p></li>
-<li><p>Vcc to P0 power ( red)</p></li>
+<li><p>Gnd to P0 ground. ( - )</p></li>
+<li><p>Vcc to P0 power ( + )</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -367,7 +367,7 @@ the <code class="docutils literal notranslate"><span class="pre">analog</span> <
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Dec 13, 2024 21:38</div>
+              Last updated on Dec 13, 2024 21:42</div>
           </div>
           <div class="right-details">
             <div class="icons">

@@ -20,9 +20,9 @@ is composed of switches in the shape of an "H"
 ![h_bridge](/images/h-bridge1508A.png){.c200}
 
 This driver has two H-bridges on it. The inputs `INT1` and `INT2` control 
-Motor A, an  `INT3` and `INT4` control Motor B. 
+Motor A, and `INT3` and `INT4` control Motor B. 
 
-When we turn pin `INT1` on anbddd `INT2` off, the circuit turns on switches S1
+When we turn pin `INT1` on and `INT2` off, the circuit turns on switches S1
 and S4, which causes current to flow forward through the motor and the motor
 turns forward.  When `INT1` is off and `INT2` is on, the circuit turns on switch
 S2 and S3, the current flows backwards through the motor, and the motor turns
@@ -42,8 +42,8 @@ connections:
 
 * `INT1` ( or `INT3` ) to P0 signal ( yellow )
 * `INT2` ( or ` INT4` zxsdx ) to P1 signal (yellow )
-* Gnd to P0 ground. ( black )
-* Vcc to P0 power ( red)
+* Gnd to P0 ground. ( - )
+* Vcc to P0 power ( + )
 
 ```{warning}
 Very Important! Connect the power pin  Vcc *last*, and disconnect it *first*. Do not
