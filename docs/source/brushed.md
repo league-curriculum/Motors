@@ -40,8 +40,8 @@ Our driver board has two h-bridges on it, which is very useful for a robot with
 two wheels. However, we will only us one of them. Using dupont wires, make these
 connections: 
 
-* A-1A ( or B-1A ) to P0 signal ( yellow )
-* A-1B ( or B-1B) to P1 signal (yellow )
+* `INT1` ( or `INT3` ) to P0 signal ( yellow )
+* `INT2` ( or ` INT4` zxsdx ) to P1 signal (yellow )
 * Gnd to P0 ground. ( black )
 * Vcc to P0 power ( red)
 
@@ -49,6 +49,8 @@ connections:
 Very Important! Connect the power pin  Vcc *last*, and disconnect it *first*. Do not
 connect or disconnect the signal pins while power is applied. Violating these rules can
 destroy the driver. 
+
+**It would be best to unplug both USB cables while connecting or disconnecting the H-Bridge**
 ```
 
 Then, connect the red and black motor leads to the "motor a" terminals. It
@@ -56,7 +58,7 @@ doesn't matter which side the red and black go on; swapping them will make the
 motor turn in the other direction when you program it to go forward. You may
 have to use a breadboard to make the connections between male Dupont wires. 
 
-![step_driver_cons](/images/hbridge-connections.png){.c400}
+![step_driver_cons](/images/hbridge-1508A-connections.png){.c400}
 
 ## Program
 
@@ -70,7 +72,7 @@ P1. To reverse, write a 1 to P0 and a 0 to P1. This program will have a constant
 speed, but you can modify it with `analog write` to drive the motor with a
 variable speed. 
 
-![step_driver_cons](/images/hbridge-buttons-program.png){.c400}
+![step_driver_cons](/images/hbridge-buttons-program.png){.c600}
 
 ( You can import this program from Github with the url https://github.com/League-Microbit/H-Bridge-Control.git)
 
@@ -78,6 +80,16 @@ variable speed.
 After downloading the program, press the A button to turn the motor one
 direction, the B button to turn it the other, and the logo  ( the robot face
 between the buttons ) to stop the motors.
+
+
+Here is another program that shows how to change the speed of the motor, using
+the `analog write` command. 
+
+( You can import this program from https://github.com/League-Microbit/duty-cycle-buttons )
+
+![duty-cycle](/images/duty-cycle-program.png){.c600}
+
+When you press the A or B buttons, this program will write a square wave duty cycle signal to the h-bridge, using the `analog write` feature, which will start the motor running slowly, then speed it up. 
 
 ## How it Works
 
