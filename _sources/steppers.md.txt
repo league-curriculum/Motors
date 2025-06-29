@@ -46,8 +46,7 @@ Then, enter in this program:
 
 ![step_driver_cons](/images/stepper-program.png){.c400}
 
-The "show image" block is under "Advanced > Images"
-
+You can also import this program from [https://github.com/League-Microbit/stepper](https://github.com/League-Microbit/stepper). 
 
 After you download the program, you should see the shaft of the stepper motor
 moving back and forth. 
