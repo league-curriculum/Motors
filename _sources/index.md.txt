@@ -19,6 +19,7 @@ signals.md
 brushed.md
 servos.md
 steppers.md
+programs.md
 ```
 
 </td>
