@@ -18,3 +18,5 @@ theme = "curriculum-hugo-theme"
 
 [params]
   instructorGuide = true
+  github_repo = "https://github.com/league-curriculum/Motors"
+
