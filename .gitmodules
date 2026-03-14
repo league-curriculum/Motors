@@ -1,0 +1,3 @@
+[submodule "themes/curriculum-hugo-theme"]
+	path = themes/curriculum-hugo-theme
+	url = https://github.com/league-infrastructure/curriculum-hugo-theme.git
