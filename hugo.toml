@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://curriculum.jointheleague.org/motors/"
 title = "Motors Clinic"
 theme = "curriculum-hugo-theme"
 
