@@ -1,0 +1,20 @@
+/* Module-level nav items: bold, slightly larger */
+.sidebar-module > .sidebar-module-link {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-foreground-primary);
+  padding-top: 0.75rem;
+}
+
+.sidebar-module:first-child > .sidebar-module-link {
+  padding-top: 0.5rem;
+}
+
+/* Lesson items: smaller, indented */
+.sidebar-lessons {
+  padding-left: 1rem !important;
+}
+
+.sidebar-lessons a {
+  font-size: var(--font-size--small);
+}

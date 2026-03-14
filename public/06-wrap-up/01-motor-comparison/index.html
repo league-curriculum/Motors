@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Motor Comparison — Motors Clinic</title>
+  
+  <style>/* ── Furo-inspired theme for League curricula ────────────────── */
+/* Adapted from Sphinx Furo theme (MIT) to match Motors Clinic   */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Furo light-theme colors */
+  --color-foreground-primary: #000;
+  --color-foreground-secondary: #5a5c63;
+  --color-foreground-muted: #72747e;
+  --color-foreground-border: #878787;
+  --color-background-primary: #fff;
+  --color-background-secondary: #f8f9fb;
+  --color-background-hover: #efeff4;
+  --color-background-border: #eeebee;
+  --color-brand-primary: #0a4bff;
+  --color-brand-content: #2757dd;
+  --color-link: #2757dd;
+  --color-link-visited: #872ee0;
+  --color-inline-code-background: rgba(0,0,0,.06);
+  --color-table-header-background: var(--color-background-secondary);
+  --color-admonition-background: transparent;
+
+  /* Layout */
+  --sidebar-width: 15em;
+  --content-width: 46em;
+  --content-padding: 3em;
+
+  /* Typography */
+  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-stack--monospace: SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --font-size--normal: 100%;
+  --font-size--small: 87.5%;
+
+  /* Sidebar */
+  --sidebar-item-line-height: 1rem;
+  --sidebar-item-spacing-vertical: .5rem;
+  --sidebar-item-spacing-horizontal: 1rem;
+  --sidebar-item-height: calc(var(--sidebar-item-line-height) + 2 * var(--sidebar-item-spacing-vertical));
+}
+
+html {
+  font-size: var(--font-size--normal);
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-stack);
+  color: var(--color-foreground-primary);
+  background: var(--color-background-primary);
+  line-height: 1.5;
+}
+
+/* ── Page layout (Furo .page) ────────────────────────────────── */
+.page {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar (Furo .sidebar-drawer) ──────────────────────────── */
+.sidebar-drawer {
+  width: calc(50% - 26em);
+  min-width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: var(--color-background-secondary);
+  border-right: 1px solid var(--color-background-border);
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar-container {
+  width: var(--sidebar-width);
+  padding: 1.5rem 0;
+  margin-left: auto;
+}
+
+/* Brand / logo */
+.sidebar-brand {
+  display: block;
+  text-decoration: none;
+  color: var(--color-foreground-primary);
+  padding-bottom: 1rem;
+}
+
+.sidebar-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sidebar-brand-text {
+  display: block;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0.75rem var(--sidebar-item-spacing-horizontal) 0;
+}
+
+/* Sidebar navigation tree */
+.sidebar-tree ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-tree li {
+  margin: 0;
+  position: relative;
+}
+
+.sidebar-tree .caption {
+  font-weight: 700;
+  font-size: var(--font-size--small);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-foreground-muted);
+  padding: 1rem var(--sidebar-item-spacing-horizontal) 0.25rem;
+}
+
+.sidebar-tree a {
+  display: block;
+  padding: var(--sidebar-item-spacing-vertical) var(--sidebar-item-spacing-horizontal);
+  color: var(--color-foreground-secondary);
+  text-decoration: none;
+  font-size: var(--font-size--small);
+  line-height: var(--sidebar-item-line-height);
+}
+
+.sidebar-tree a:hover {
+  color: var(--color-foreground-primary);
+  background: var(--color-background-hover);
+}
+
+.sidebar-tree .current > a {
+  font-weight: 700;
+  color: var(--color-brand-primary);
+}
+
+.sidebar-tree ul ul {
+  padding-left: var(--sidebar-item-spacing-horizontal);
+}
+
+/* ── Main content area ───────────────────────────────────────── */
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  max-width: var(--content-width);
+  padding: 2rem var(--content-padding);
+  margin: 0;
+  flex: 1;
+}
+
+/* ── Typography ──────────────────────────────────────────────── */
+.content h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.content h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-background-border);
+  padding-bottom: 0.3rem;
+}
+
+.content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.content p {
+  margin-bottom: 0.75rem;
+}
+
+.content ul, .content ol {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+}
+
+.content li {
+  margin-bottom: 0.25rem;
+}
+
+.content li > p {
+  margin-bottom: 0.25rem;
+}
+
+.content a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+.content a:visited {
+  color: var(--color-link-visited);
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.content blockquote {
+  border-left: 3px solid var(--color-foreground-border);
+  padding-left: 1rem;
+  margin: 0.75rem 0;
+  color: var(--color-foreground-secondary);
+}
+
+/* ── Code ────────────────────────────────────────────────────── */
+.content code {
+  background: var(--color-inline-code-background);
+  padding: 0.1em 0.3em;
+  border-radius: 0.2rem;
+  font-size: 0.875em;
+  font-family: var(--font-stack--monospace);
+}
+
+.content pre {
+  background: var(--color-inline-code-background);
+  border-radius: 0.2rem;
+  padding: 0.625rem 0.875rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.content pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.8125rem;
+}
+
+/* ── Tables (Furo style) ─────────────────────────────────────── */
+.content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.content th, .content td {
+  border: 1px solid var(--color-background-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.content th {
+  background: var(--color-table-header-background);
+  font-weight: 700;
+}
+
+/* ── Admonitions / Callouts (Furo style) ─────────────────────── */
+.callout {
+  margin: 1rem 0;
+  padding: 0;
+  border-left: 0.2rem solid var(--color-brand-primary);
+  background: var(--color-admonition-background);
+}
+
+.callout-title {
+  font-weight: 700;
+  padding: 0.5rem 0.75rem;
+  background: rgba(10, 75, 255, 0.1);
+}
+
+.callout-body {
+  padding: 0.5rem 0.75rem;
+}
+
+.callout-info { border-left-color: #0a4bff; }
+.callout-info .callout-title { background: rgba(10, 75, 255, 0.1); }
+
+.callout-warning { border-left-color: #e65100; }
+.callout-warning .callout-title { background: rgba(230, 81, 0, 0.1); }
+
+.callout-tip { border-left-color: #00897b; }
+.callout-tip .callout-title { background: rgba(0, 137, 123, 0.1); }
+
+.callout-danger { border-left-color: #d32f2f; }
+.callout-danger .callout-title { background: rgba(211, 47, 47, 0.1); }
+
+/* ── Instructor Guide ────────────────────────────────────────── */
+.instructor-guide {
+  margin: 1.5rem 0;
+  border: 2px solid #bf8700;
+  border-radius: 0.2rem;
+  background: #fffbeb;
+}
+
+.instructor-guide summary {
+  padding: 0.5rem 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.instructor-guide[open] summary {
+  border-bottom: 1px solid #bf8700;
+}
+
+.instructor-guide-content {
+  padding: 0.75rem 1rem;
+}
+
+/* ── Sidebar nav buttons ─────────────────────────────────────── */
+.sidebar-nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem var(--sidebar-item-spacing-horizontal);
+  border-top: 1px solid var(--color-background-border);
+  margin-top: 0.5rem;
+}
+
+.sidebar-nav-prev,
+.sidebar-nav-next {
+  font-size: var(--font-size--small);
+  color: var(--color-brand-content);
+  text-decoration: none;
+}
+
+.sidebar-nav-prev:hover,
+.sidebar-nav-next:hover {
+  text-decoration: underline;
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.bottom-of-page {
+  border-top: 1px solid var(--color-background-border);
+  padding: 1rem var(--content-padding);
+  max-width: var(--content-width);
+}
+
+.prev-next {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-background-border);
+}
+
+.prev-next a {
+  color: var(--color-brand-content);
+  text-decoration: none;
+  font-size: var(--font-size--small);
+}
+
+.prev-next a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--color-foreground-muted);
+}
+
+.footer-bottom a {
+  color: var(--color-foreground-muted);
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: var(--color-brand-content);
+}
+
+.footer-credits {
+  flex: 1;
+}
+
+.footer-github {
+  margin-left: auto;
+}
+
+.footer-github svg {
+  vertical-align: middle;
+}
+
+/* ── Breadcrumb ──────────────────────────────────────────────── */
+.breadcrumb {
+  font-size: var(--font-size--small);
+  color: var(--color-foreground-muted);
+  margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+  color: var(--color-foreground-muted);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-brand-content);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 67em) {
+  .content { padding: 2rem 1.5rem; }
+  .bottom-of-page { padding: 1rem 1.5rem; }
+}
+
+@media (max-width: 63em) {
+  .page { flex-direction: column; }
+  .sidebar-drawer {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--color-background-border);
+  }
+  .sidebar-container {
+    width: 100%;
+    padding: 0.75rem 0;
+    margin: 0;
+  }
+  .sidebar-brand { padding-bottom: 0.75rem; }
+}
+</style>
+  
+  <style>/* Instructor Guide — hidden sections collected into footer panel */
+.instructor-guide-section {
+  display: none;
+}
+
+/* Footer icon button */
+.footer-instructor button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-foreground-muted);
+  padding: 0;
+  line-height: 1;
+}
+
+.footer-instructor button:hover {
+  color: var(--color-brand-content);
+}
+
+/* Slide-up panel */
+.instructor-guide-panel {
+  border-top: 2px solid #bf8700;
+  background: #fffbeb;
+  padding: 0;
+  margin-top: 0.75rem;
+}
+
+.instructor-guide-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.875rem;
+}
+
+.instructor-guide-panel-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #92400e;
+  line-height: 1;
+}
+
+.instructor-guide-panel-body {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.instructor-guide-panel-body p {
+  margin-bottom: 0.5rem;
+}
+
+/* Callout boxes */
+.callout {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-left: 4px solid #0969da;
+  border-radius: 4px;
+  background: #f6f8fa;
+}
+
+.callout-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.callout-info {
+  border-left-color: #0969da;
+}
+
+.callout-warning {
+  border-left-color: #d1242f;
+  background: #fff5f5;
+}
+
+.callout-tip {
+  border-left-color: #1a7f37;
+  background: #f0fff4;
+}
+</style>
+  
+  <style>/* Module-level nav items: bold, slightly larger */
+.sidebar-module > .sidebar-module-link {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-foreground-primary);
+  padding-top: 0.75rem;
+}
+
+.sidebar-module:first-child > .sidebar-module-link {
+  padding-top: 0.5rem;
+}
+
+/* Lesson items: smaller, indented */
+.sidebar-lessons {
+  padding-left: 1rem !important;
+}
+
+.sidebar-lessons a {
+  font-size: var(--font-size--small);
+}
+</style>
+  
+</head>
+<body>
+  
+  
+  
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+  
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+      
+        
+      
+      
+    
+  
+  
+  
+
+  <div class="page">
+    <aside class="sidebar-drawer">
+      <div class="sidebar-container">
+        <a href="/" class="sidebar-brand">
+          <img src="https://images.jointheleague.org/logos/logo4.png" alt="League logo" class="sidebar-logo">
+          <span class="sidebar-brand-text">Motors Clinic</span>
+        </a>
+        <nav class="sidebar-tree">
+          <ul>
+            
+            
+            
+            <li class="sidebar-module">
+              <a href="/01-getting-started/" class="sidebar-module-link">Getting Started</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/01-getting-started/01-kit-contents/">Kit Contents</a>
+                </li>
+                
+                <li>
+                  <a href="/01-getting-started/02-microbit-setup/">Micro:bit Setup</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/02-signals-and-power/" class="sidebar-module-link">Signals and Power</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/02-signals-and-power/01-voltage-and-pwm/">Voltage and PWM</a>
+                </li>
+                
+                <li>
+                  <a href="/02-signals-and-power/02-oscilloscope/">Oscilloscope</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/03-brushed-motors/" class="sidebar-module-link">Brushed Motors</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/03-brushed-motors/01-h-bridge-wiring/">H-Bridge Wiring</a>
+                </li>
+                
+                <li>
+                  <a href="/03-brushed-motors/02-speed-and-direction/">Speed and Direction</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/04-hobby-servos/" class="sidebar-module-link">Hobby Servos</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/04-hobby-servos/01-servo-wiring/">Servo Wiring</a>
+                </li>
+                
+                <li>
+                  <a href="/04-hobby-servos/02-sweep-programs/">Sweep Programs</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/05-steppers/" class="sidebar-module-link">Stepper Motors</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/05-steppers/01-stepper-wiring/">Stepper Wiring</a>
+                </li>
+                
+                <li>
+                  <a href="/05-steppers/02-coil-sequencing/">Coil Sequencing</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/06-wrap-up/" class="sidebar-module-link">Wrap-Up</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li class="current">
+                  <a href="/06-wrap-up/01-motor-comparison/">Motor Comparison</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            
+          </ul>
+        </nav>
+        <div class="sidebar-nav-buttons">
+          <a href="/06-wrap-up/" class="sidebar-nav-prev">← Previous</a>
+          
+        </div>
+      </div>
+    </aside>
+    <div class="main">
+      <div class="content">
+        
+<nav class="breadcrumb">
+  <a href="/">Home</a>
+  
+  / <a href="/06-wrap-up/">Wrap-Up</a>
+  
+  / <span>Motor Comparison</span>
+</nav>
+<article>
+  <h1>Motor Comparison</h1>
+  <div class="instructor-guide-section" style="display:none;">
+  <p><strong>Objectives:</strong></p>
+<ul>
+<li>Compare brushed DC motors, hobby servos, and stepper motors across multiple criteria</li>
+<li>Select the appropriate motor type for a given application</li>
+<li>Summarize what was learned across the entire motors course</li>
+</ul>
+<p><strong>Materials:</strong></p>
+<ul>
+<li>Whiteboard or projector for displaying the comparison table</li>
+<li>(Optional) All three motor types on the table for reference</li>
+</ul>
+<p><strong>Timing:</strong></p>
+<ul>
+<li>0:00 - 0:05 — Ask students to recall the three motor types they worked with; list them on the board</li>
+<li>0:05 - 0:15 — Build the comparison table together as a class, filling in columns based on what students remember</li>
+<li>0:15 - 0:20 — Discuss &ldquo;when to use which&rdquo; scenarios; have students argue for a motor choice</li>
+<li>0:20 - 0:25 — Quick review activity: give a use case, students hold up 1, 2, or 3 fingers for their motor choice</li>
+</ul>
+<p><strong>Key Concepts:</strong></p>
+<ul>
+<li>Each motor type has trade-offs between cost, precision, and complexity</li>
+<li>Brushed DC motors are simplest and cheapest but offer no positioning control</li>
+<li>Servos provide angular positioning but are limited to about 180 degrees</li>
+<li>Stepper motors provide the most precision but require more complex control and cost more</li>
+</ul>
+<p><strong>Common Mistakes:</strong></p>
+<ul>
+<li>Thinking servos can rotate continuously (standard hobby servos cannot)</li>
+<li>Confusing &ldquo;precision&rdquo; with &ldquo;speed&rdquo; — stepper motors are precise but not necessarily fast</li>
+<li>Assuming more expensive always means better — the right motor depends on the application</li>
+</ul>
+<p><strong>Assessment Cues:</strong></p>
+<ul>
+<li>Student can name all three motor types and one distinguishing characteristic of each</li>
+<li>Given a scenario (e.g., &ldquo;I want to build a fan&rdquo;), student can justify which motor to use</li>
+<li>Student can explain why a 3D printer uses steppers instead of DC motors</li>
+</ul>
+<p><strong>Differentiation:</strong></p>
+<ul>
+<li>Struggling: Provide a partially filled comparison table and have them complete the missing cells.</li>
+<li>Advanced: Ask them to research a fourth motor type (e.g., brushless DC motor) and add it to the table.</li>
+</ul>
+
+</div>
+
+<h2 id="motor-comparison-chart">Motor Comparison Chart</h2>
+<p>Throughout this course, you have worked with three different types of motors. Each one has different strengths and is used for different purposes.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Brushed DC Motor</th>
+          <th>Hobby Servo</th>
+          <th>Stepper Motor</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Motion Type</strong></td>
+          <td>Continuous rotation</td>
+          <td>~180° positioning</td>
+          <td>Discrete steps (full rotation possible)</td>
+      </tr>
+      <tr>
+          <td><strong>Control Method</strong></td>
+          <td>PWM speed + H-Bridge direction</td>
+          <td>PWM position signal</td>
+          <td>Coil sequencing</td>
+      </tr>
+      <tr>
+          <td><strong>Precision</strong></td>
+          <td>Low — no position feedback</td>
+          <td>Medium — set angle, not exact steps</td>
+          <td>High — exact step count</td>
+      </tr>
+      <tr>
+          <td><strong>Cost</strong></td>
+          <td>Cheapest</td>
+          <td>Mid-range</td>
+          <td>Most expensive</td>
+      </tr>
+      <tr>
+          <td><strong>Complexity</strong></td>
+          <td>Simple (2 wires + driver)</td>
+          <td>Simple (3 wires, built-in driver)</td>
+          <td>Complex (4+ wires + driver board)</td>
+      </tr>
+      <tr>
+          <td><strong>Common Uses</strong></td>
+          <td>Fans, toys, wheels, pumps</td>
+          <td>Robot arms, RC vehicles, pan/tilt cameras</td>
+          <td>3D printers, CNC machines, camera sliders</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="when-to-use-which-motor">When to Use Which Motor</h2>
+<p><strong>Use a brushed DC motor when:</strong></p>
+<ul>
+<li>You need continuous spinning (fans, wheels, propellers)</li>
+<li>You only care about speed and direction, not exact position</li>
+<li>Cost is a concern</li>
+</ul>
+<p><strong>Use a hobby servo when:</strong></p>
+<ul>
+<li>You need to hold a specific angle (steering, robot joints, levers)</li>
+<li>You want simple wiring and control</li>
+<li>180 degrees of motion is enough</li>
+</ul>
+<p><strong>Use a stepper motor when:</strong></p>
+<ul>
+<li>You need precise positioning across many rotations (3D printer head, CNC drill)</li>
+<li>You need to know exactly how far the motor has moved</li>
+<li>You can handle the extra wiring and programming complexity</li>
+</ul>
+<div class="callout callout-tip">
+  <div class="callout-title">Tip</div>
+  <div class="callout-content">
+    There is no single &ldquo;best&rdquo; motor. The right choice depends on what your project needs. A toy car uses DC motors for the wheels and a servo for steering — two different motors in one project!
+  </div>
+</div>
+
+<h2 id="quick-review">Quick Review</h2>
+<p>For each scenario below, decide which motor type would be the best choice and explain why:</p>
+<ol>
+<li>A robot arm that needs to pick up objects and place them precisely</li>
+<li>A desk fan that spins at adjustable speeds</li>
+<li>A 3D printer that moves a print head with 0.1 mm accuracy</li>
+<li>A remote-control car&rsquo;s steering mechanism</li>
+<li>An automatic pet feeder that dispenses food by rotating a wheel</li>
+</ol>
+<h2 id="what-you-learned">What You Learned</h2>
+<p>In this course, you explored:</p>
+<ul>
+<li><strong>Brushed DC motors</strong> — how they spin using magnetic fields, how to control speed with PWM, and how to reverse direction with an H-Bridge</li>
+<li><strong>Hobby servos</strong> — how they use a PWM signal to hold a specific angle, and how their built-in gears and feedback circuit work</li>
+<li><strong>Stepper motors</strong> — how they move in precise steps by energizing coils in sequence, and how a driver board manages the power they need</li>
+</ul>
+<p>Each motor converts electrical energy into motion, but they do it in different ways that make each one ideal for specific jobs.</p>
+
+</article>
+
+      </div>
+      <footer class="bottom-of-page">
+        
+        <div class="prev-next">
+          <div><a href="/06-wrap-up/">← Wrap-Up</a></div>
+          <div></div>
+        </div>
+        
+        <div class="footer-bottom">
+          <div class="copyright">
+            &copy; 2026 <a href="https://www.jointheleague.org">Motors Clinic</a>
+          </div>
+          <div class="footer-credits">
+            Igniting Young Minds Through Coding
+          </div>
+          
+          <div class="footer-instructor" id="instructor-toggle" style="display:none;">
+            <button type="button" title="Instructor Guide" aria-label="Toggle instructor guide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="instructor-guide-panel" id="instructor-panel" style="display:none;">
+          <div class="instructor-guide-panel-header">
+            <strong>Instructor Guide</strong>
+            <button type="button" id="instructor-close" aria-label="Close">✕</button>
+          </div>
+          <div class="instructor-guide-panel-body" id="instructor-body"></div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
+  (function() {
+    var sections = document.querySelectorAll('.instructor-guide-section');
+    if (!sections.length) return;
+    var toggle = document.getElementById('instructor-toggle');
+    var panel = document.getElementById('instructor-panel');
+    var body = document.getElementById('instructor-body');
+    var close = document.getElementById('instructor-close');
+    toggle.style.display = '';
+    sections.forEach(function(s) {
+      body.innerHTML += s.innerHTML;
+      s.remove();
+    });
+    toggle.querySelector('button').addEventListener('click', function() {
+      panel.style.display = panel.style.display === 'none' ? '' : 'none';
+    });
+    close.addEventListener('click', function() {
+      panel.style.display = 'none';
+    });
+  })();
+  </script>
+</body>
+</html>

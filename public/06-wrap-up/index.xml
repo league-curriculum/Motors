@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wrap-Up on Motors Clinic</title>
+    <link>/06-wrap-up/</link>
+    <description>Recent content in Wrap-Up on Motors Clinic</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="/06-wrap-up/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Motor Comparison</title>
+      <link>/06-wrap-up/01-motor-comparison/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/06-wrap-up/01-motor-comparison/</guid>
+      <description>&lt;div class=&#34;instructor-guide-section&#34; style=&#34;display:none;&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;Objectives:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Compare brushed DC motors, hobby servos, and stepper motors across multiple criteria&lt;/li&gt;&#xA;&lt;li&gt;Select the appropriate motor type for a given application&lt;/li&gt;&#xA;&lt;li&gt;Summarize what was learned across the entire motors course&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Materials:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Whiteboard or projector for displaying the comparison table&lt;/li&gt;&#xA;&lt;li&gt;(Optional) All three motor types on the table for reference&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Timing:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;0:00 - 0:05 — Ask students to recall the three motor types they worked with; list them on the board&lt;/li&gt;&#xA;&lt;li&gt;0:05 - 0:15 — Build the comparison table together as a class, filling in columns based on what students remember&lt;/li&gt;&#xA;&lt;li&gt;0:15 - 0:20 — Discuss &amp;ldquo;when to use which&amp;rdquo; scenarios; have students argue for a motor choice&lt;/li&gt;&#xA;&lt;li&gt;0:20 - 0:25 — Quick review activity: give a use case, students hold up 1, 2, or 3 fingers for their motor choice&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Key Concepts:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

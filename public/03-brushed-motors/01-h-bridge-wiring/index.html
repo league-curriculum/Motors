@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>H-Bridge Wiring — Motors Clinic</title>
+  
+  <style>/* ── Furo-inspired theme for League curricula ────────────────── */
+/* Adapted from Sphinx Furo theme (MIT) to match Motors Clinic   */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Furo light-theme colors */
+  --color-foreground-primary: #000;
+  --color-foreground-secondary: #5a5c63;
+  --color-foreground-muted: #72747e;
+  --color-foreground-border: #878787;
+  --color-background-primary: #fff;
+  --color-background-secondary: #f8f9fb;
+  --color-background-hover: #efeff4;
+  --color-background-border: #eeebee;
+  --color-brand-primary: #0a4bff;
+  --color-brand-content: #2757dd;
+  --color-link: #2757dd;
+  --color-link-visited: #872ee0;
+  --color-inline-code-background: rgba(0,0,0,.06);
+  --color-table-header-background: var(--color-background-secondary);
+  --color-admonition-background: transparent;
+
+  /* Layout */
+  --sidebar-width: 15em;
+  --content-width: 46em;
+  --content-padding: 3em;
+
+  /* Typography */
+  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-stack--monospace: SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --font-size--normal: 100%;
+  --font-size--small: 87.5%;
+
+  /* Sidebar */
+  --sidebar-item-line-height: 1rem;
+  --sidebar-item-spacing-vertical: .5rem;
+  --sidebar-item-spacing-horizontal: 1rem;
+  --sidebar-item-height: calc(var(--sidebar-item-line-height) + 2 * var(--sidebar-item-spacing-vertical));
+}
+
+html {
+  font-size: var(--font-size--normal);
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-stack);
+  color: var(--color-foreground-primary);
+  background: var(--color-background-primary);
+  line-height: 1.5;
+}
+
+/* ── Page layout (Furo .page) ────────────────────────────────── */
+.page {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar (Furo .sidebar-drawer) ──────────────────────────── */
+.sidebar-drawer {
+  width: calc(50% - 26em);
+  min-width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: var(--color-background-secondary);
+  border-right: 1px solid var(--color-background-border);
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar-container {
+  width: var(--sidebar-width);
+  padding: 1.5rem 0;
+  margin-left: auto;
+}
+
+/* Brand / logo */
+.sidebar-brand {
+  display: block;
+  text-decoration: none;
+  color: var(--color-foreground-primary);
+  padding-bottom: 1rem;
+}
+
+.sidebar-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sidebar-brand-text {
+  display: block;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0.75rem var(--sidebar-item-spacing-horizontal) 0;
+}
+
+/* Sidebar navigation tree */
+.sidebar-tree ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-tree li {
+  margin: 0;
+  position: relative;
+}
+
+.sidebar-tree .caption {
+  font-weight: 700;
+  font-size: var(--font-size--small);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-foreground-muted);
+  padding: 1rem var(--sidebar-item-spacing-horizontal) 0.25rem;
+}
+
+.sidebar-tree a {
+  display: block;
+  padding: var(--sidebar-item-spacing-vertical) var(--sidebar-item-spacing-horizontal);
+  color: var(--color-foreground-secondary);
+  text-decoration: none;
+  font-size: var(--font-size--small);
+  line-height: var(--sidebar-item-line-height);
+}
+
+.sidebar-tree a:hover {
+  color: var(--color-foreground-primary);
+  background: var(--color-background-hover);
+}
+
+.sidebar-tree .current > a {
+  font-weight: 700;
+  color: var(--color-brand-primary);
+}
+
+.sidebar-tree ul ul {
+  padding-left: var(--sidebar-item-spacing-horizontal);
+}
+
+/* ── Main content area ───────────────────────────────────────── */
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  max-width: var(--content-width);
+  padding: 2rem var(--content-padding);
+  margin: 0;
+  flex: 1;
+}
+
+/* ── Typography ──────────────────────────────────────────────── */
+.content h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.content h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-background-border);
+  padding-bottom: 0.3rem;
+}
+
+.content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.content p {
+  margin-bottom: 0.75rem;
+}
+
+.content ul, .content ol {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+}
+
+.content li {
+  margin-bottom: 0.25rem;
+}
+
+.content li > p {
+  margin-bottom: 0.25rem;
+}
+
+.content a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+.content a:visited {
+  color: var(--color-link-visited);
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.content blockquote {
+  border-left: 3px solid var(--color-foreground-border);
+  padding-left: 1rem;
+  margin: 0.75rem 0;
+  color: var(--color-foreground-secondary);
+}
+
+/* ── Code ────────────────────────────────────────────────────── */
+.content code {
+  background: var(--color-inline-code-background);
+  padding: 0.1em 0.3em;
+  border-radius: 0.2rem;
+  font-size: 0.875em;
+  font-family: var(--font-stack--monospace);
+}
+
+.content pre {
+  background: var(--color-inline-code-background);
+  border-radius: 0.2rem;
+  padding: 0.625rem 0.875rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.content pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.8125rem;
+}
+
+/* ── Tables (Furo style) ─────────────────────────────────────── */
+.content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.content th, .content td {
+  border: 1px solid var(--color-background-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.content th {
+  background: var(--color-table-header-background);
+  font-weight: 700;
+}
+
+/* ── Admonitions / Callouts (Furo style) ─────────────────────── */
+.callout {
+  margin: 1rem 0;
+  padding: 0;
+  border-left: 0.2rem solid var(--color-brand-primary);
+  background: var(--color-admonition-background);
+}
+
+.callout-title {
+  font-weight: 700;
+  padding: 0.5rem 0.75rem;
+  background: rgba(10, 75, 255, 0.1);
+}
+
+.callout-body {
+  padding: 0.5rem 0.75rem;
+}
+
+.callout-info { border-left-color: #0a4bff; }
+.callout-info .callout-title { background: rgba(10, 75, 255, 0.1); }
+
+.callout-warning { border-left-color: #e65100; }
+.callout-warning .callout-title { background: rgba(230, 81, 0, 0.1); }
+
+.callout-tip { border-left-color: #00897b; }
+.callout-tip .callout-title { background: rgba(0, 137, 123, 0.1); }
+
+.callout-danger { border-left-color: #d32f2f; }
+.callout-danger .callout-title { background: rgba(211, 47, 47, 0.1); }
+
+/* ── Instructor Guide ────────────────────────────────────────── */
+.instructor-guide {
+  margin: 1.5rem 0;
+  border: 2px solid #bf8700;
+  border-radius: 0.2rem;
+  background: #fffbeb;
+}
+
+.instructor-guide summary {
+  padding: 0.5rem 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.instructor-guide[open] summary {
+  border-bottom: 1px solid #bf8700;
+}
+
+.instructor-guide-content {
+  padding: 0.75rem 1rem;
+}
+
+/* ── Sidebar nav buttons ─────────────────────────────────────── */
+.sidebar-nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem var(--sidebar-item-spacing-horizontal);
+  border-top: 1px solid var(--color-background-border);
+  margin-top: 0.5rem;
+}
+
+.sidebar-nav-prev,
+.sidebar-nav-next {
+  font-size: var(--font-size--small);
+  color: var(--color-brand-content);
+  text-decoration: none;
+}
+
+.sidebar-nav-prev:hover,
+.sidebar-nav-next:hover {
+  text-decoration: underline;
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.bottom-of-page {
+  border-top: 1px solid var(--color-background-border);
+  padding: 1rem var(--content-padding);
+  max-width: var(--content-width);
+}
+
+.prev-next {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-background-border);
+}
+
+.prev-next a {
+  color: var(--color-brand-content);
+  text-decoration: none;
+  font-size: var(--font-size--small);
+}
+
+.prev-next a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--color-foreground-muted);
+}
+
+.footer-bottom a {
+  color: var(--color-foreground-muted);
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: var(--color-brand-content);
+}
+
+.footer-credits {
+  flex: 1;
+}
+
+.footer-github {
+  margin-left: auto;
+}
+
+.footer-github svg {
+  vertical-align: middle;
+}
+
+/* ── Breadcrumb ──────────────────────────────────────────────── */
+.breadcrumb {
+  font-size: var(--font-size--small);
+  color: var(--color-foreground-muted);
+  margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+  color: var(--color-foreground-muted);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-brand-content);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 67em) {
+  .content { padding: 2rem 1.5rem; }
+  .bottom-of-page { padding: 1rem 1.5rem; }
+}
+
+@media (max-width: 63em) {
+  .page { flex-direction: column; }
+  .sidebar-drawer {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--color-background-border);
+  }
+  .sidebar-container {
+    width: 100%;
+    padding: 0.75rem 0;
+    margin: 0;
+  }
+  .sidebar-brand { padding-bottom: 0.75rem; }
+}
+</style>
+  
+  <style>/* Instructor Guide — hidden sections collected into footer panel */
+.instructor-guide-section {
+  display: none;
+}
+
+/* Footer icon button */
+.footer-instructor button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-foreground-muted);
+  padding: 0;
+  line-height: 1;
+}
+
+.footer-instructor button:hover {
+  color: var(--color-brand-content);
+}
+
+/* Slide-up panel */
+.instructor-guide-panel {
+  border-top: 2px solid #bf8700;
+  background: #fffbeb;
+  padding: 0;
+  margin-top: 0.75rem;
+}
+
+.instructor-guide-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.875rem;
+}
+
+.instructor-guide-panel-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #92400e;
+  line-height: 1;
+}
+
+.instructor-guide-panel-body {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.instructor-guide-panel-body p {
+  margin-bottom: 0.5rem;
+}
+
+/* Callout boxes */
+.callout {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-left: 4px solid #0969da;
+  border-radius: 4px;
+  background: #f6f8fa;
+}
+
+.callout-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.callout-info {
+  border-left-color: #0969da;
+}
+
+.callout-warning {
+  border-left-color: #d1242f;
+  background: #fff5f5;
+}
+
+.callout-tip {
+  border-left-color: #1a7f37;
+  background: #f0fff4;
+}
+</style>
+  
+  <style>/* Module-level nav items: bold, slightly larger */
+.sidebar-module > .sidebar-module-link {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-foreground-primary);
+  padding-top: 0.75rem;
+}
+
+.sidebar-module:first-child > .sidebar-module-link {
+  padding-top: 0.5rem;
+}
+
+/* Lesson items: smaller, indented */
+.sidebar-lessons {
+  padding-left: 1rem !important;
+}
+
+.sidebar-lessons a {
+  font-size: var(--font-size--small);
+}
+</style>
+  
+</head>
+<body>
+  
+  
+  
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+  
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+      
+        
+      
+      
+        
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  
+
+  <div class="page">
+    <aside class="sidebar-drawer">
+      <div class="sidebar-container">
+        <a href="/" class="sidebar-brand">
+          <img src="https://images.jointheleague.org/logos/logo4.png" alt="League logo" class="sidebar-logo">
+          <span class="sidebar-brand-text">Motors Clinic</span>
+        </a>
+        <nav class="sidebar-tree">
+          <ul>
+            
+            
+            
+            <li class="sidebar-module">
+              <a href="/01-getting-started/" class="sidebar-module-link">Getting Started</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/01-getting-started/01-kit-contents/">Kit Contents</a>
+                </li>
+                
+                <li>
+                  <a href="/01-getting-started/02-microbit-setup/">Micro:bit Setup</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/02-signals-and-power/" class="sidebar-module-link">Signals and Power</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/02-signals-and-power/01-voltage-and-pwm/">Voltage and PWM</a>
+                </li>
+                
+                <li>
+                  <a href="/02-signals-and-power/02-oscilloscope/">Oscilloscope</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/03-brushed-motors/" class="sidebar-module-link">Brushed Motors</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li class="current">
+                  <a href="/03-brushed-motors/01-h-bridge-wiring/">H-Bridge Wiring</a>
+                </li>
+                
+                <li>
+                  <a href="/03-brushed-motors/02-speed-and-direction/">Speed and Direction</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/04-hobby-servos/" class="sidebar-module-link">Hobby Servos</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/04-hobby-servos/01-servo-wiring/">Servo Wiring</a>
+                </li>
+                
+                <li>
+                  <a href="/04-hobby-servos/02-sweep-programs/">Sweep Programs</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/05-steppers/" class="sidebar-module-link">Stepper Motors</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/05-steppers/01-stepper-wiring/">Stepper Wiring</a>
+                </li>
+                
+                <li>
+                  <a href="/05-steppers/02-coil-sequencing/">Coil Sequencing</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/06-wrap-up/" class="sidebar-module-link">Wrap-Up</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/06-wrap-up/01-motor-comparison/">Motor Comparison</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            
+          </ul>
+        </nav>
+        <div class="sidebar-nav-buttons">
+          <a href="/03-brushed-motors/" class="sidebar-nav-prev">← Previous</a>
+          <a href="/03-brushed-motors/02-speed-and-direction/" class="sidebar-nav-next">Next →</a>
+        </div>
+      </div>
+    </aside>
+    <div class="main">
+      <div class="content">
+        
+<nav class="breadcrumb">
+  <a href="/">Home</a>
+  
+  / <a href="/03-brushed-motors/">Brushed Motors</a>
+  
+  / <span>H-Bridge Wiring</span>
+</nav>
+<article>
+  <h1>H-Bridge Wiring</h1>
+  <div class="instructor-guide-section" style="display:none;">
+  <p><strong>Objectives:</strong></p>
+<ul>
+<li>Students will explain how an H-Bridge circuit controls motor direction by switching current flow</li>
+<li>Students will correctly wire an H-Bridge driver board to a Micro:bit breakout board</li>
+<li>Students will follow the safe power-up and power-down sequence for the H-Bridge</li>
+</ul>
+<p><strong>Materials:</strong></p>
+<ul>
+<li>1 Micro:bit with USB cable per student</li>
+<li>1 breakout board per student</li>
+<li>1 L9110 H-Bridge driver board per student</li>
+<li>1 small brushed DC motor per student</li>
+<li>4 Dupont wires per student (male-to-male or male-to-female as needed)</li>
+<li>Breadboard for making connections (optional)</li>
+<li>Battery pack with USB cable</li>
+</ul>
+<p><strong>Timing:</strong></p>
+<ul>
+<li>0-5 min: Introduce brushed motors and show physical motor</li>
+<li>5-10 min: Explain H-Bridge circuit diagram and how switch pairs control direction</li>
+<li>10-15 min: Walk through wiring connections step by step; emphasize safety rules</li>
+<li>15-25 min: Students wire their H-Bridge boards</li>
+<li>25-30 min: Verify all connections before powering on; instructor checks each station</li>
+</ul>
+<p><strong>Key Concepts:</strong></p>
+<ul>
+<li>A brushed DC motor spins when current flows through it; reversing the current reverses the direction</li>
+<li>An H-Bridge uses four switches arranged in an H shape to control current direction through a motor</li>
+<li>The motor needs more power than the Micro:bit can provide, so a driver board supplies external power</li>
+<li>INT1/INT2 control Motor A; INT3/INT4 control Motor B</li>
+</ul>
+<p><strong>Common Mistakes:</strong></p>
+<ul>
+<li>Connecting Vcc before signal wires (can destroy the driver board)</li>
+<li>Swapping ground and signal pins on the breakout board</li>
+<li>Connecting to the wrong INT pair (using INT1/INT3 instead of INT1/INT2)</li>
+<li>Forgetting to connect ground between the driver and breakout board</li>
+</ul>
+<p><strong>Assessment Cues:</strong></p>
+<ul>
+<li>Student can point to each wire and explain what it connects</li>
+<li>Student follows the correct power-up sequence without prompting</li>
+<li>Student can predict what happens when INT1 is high and INT2 is low</li>
+</ul>
+<p><strong>Differentiation:</strong></p>
+<ul>
+<li>Struggling: Provide a printed wiring diagram with color-coded connections; pair with a partner who has completed wiring</li>
+<li>Advanced: Have student wire both H-Bridge channels and connect two motors</li>
+</ul>
+
+</div>
+
+<h2 id="how-brushed-motors-work">How Brushed Motors Work</h2>
+<p>One of the most common types of motors is the brushed continuous rotation DC
+motor. These motors use the magnetic field created when electricity moves
+through a wire to push against a permanent magnet. Motors come in a range of
+sizes, from microscopically tiny to enormous, but we will be using a common type
+of low-voltage motor that is small, simple, and inexpensive:</p>
+<p><img src="../images/small_dc_motor.png" alt="Small DC Motor"></p>
+<p>These motors require a lot more power than our microcontroller can provide.
+Additionally, for use in a robot, we would probably want the motor to be able to
+turn both forward and backward, and turn at different speeds. A driver board
+can help us with all of these problems.</p>
+<h2 id="the-h-bridge-circuit">The H-Bridge Circuit</h2>
+<p>Our motor driver board has a circuit called an H-Bridge, because the circuit
+is composed of switches in the shape of an &ldquo;H&rdquo;:</p>
+<p><img src="../images/h-bridge1508A.png" alt="H-Bridge Diagram"></p>
+<p>This driver has two H-Bridges on it. The inputs <code>INT1</code> and <code>INT2</code> control
+Motor A, and <code>INT3</code> and <code>INT4</code> control Motor B.</p>
+<p>When we turn pin <code>INT1</code> on and <code>INT2</code> off, the circuit turns on switches S1
+and S4, which causes current to flow forward through the motor and the motor
+turns forward. When <code>INT1</code> is off and <code>INT2</code> is on, the circuit turns on
+switches S2 and S3, the current flows backward through the motor, and the motor
+turns backward.</p>
+<p><img src="../images/H-bridge.png" alt="H-Bridge Current Flow"></p>
+<p><em>Image from <a href="https://nathanmelenbrink.github.io/lab/arduino/L9110.html">Driving a motor with the L9110 tutorial</a></em></p>
+<h2 id="wiring-connections">Wiring Connections</h2>
+<p>Our driver board has two H-Bridges on it, which is very useful for a robot with
+two wheels. However, we will only use one of them. Using Dupont wires, make these
+connections:</p>
+<ul>
+<li><code>INT1</code> (or <code>INT3</code>) to P0 signal (yellow)</li>
+<li><code>INT2</code> (or <code>INT4</code>) to P1 signal (yellow)</li>
+<li>Gnd to P0 ground (-)</li>
+<li>Vcc to P0 power (+)</li>
+</ul>
+<div class="callout callout-warning">
+  <div class="callout-title">Warning</div>
+  <div class="callout-content">
+    <p>Very Important! Connect the power pin Vcc <strong>last</strong>, and disconnect it <strong>first</strong>. Do not
+connect or disconnect the signal pins while power is applied. Violating these rules can
+destroy the driver.</p>
+<p><strong>It would be best to unplug both USB cables while connecting or disconnecting the H-Bridge.</strong></p>
+
+  </div>
+</div>
+
+<p>Then, connect the red and black motor leads to the &ldquo;Motor A&rdquo; terminals. It
+does not matter which side the red and black go on; swapping them will make the
+motor turn in the other direction when you program it to go forward. You may
+have to use a breadboard to make the connections between male Dupont wires.</p>
+<p><img src="../images/hbridge-1508A-connections.png" alt="H-Bridge Connections"></p>
+<div class="callout callout-tip">
+  <div class="callout-title">Tip</div>
+  <div class="callout-content">
+    Before powering on, double-check every wire against the diagram above. Have your
+instructor verify your connections before plugging in USB cables.
+  </div>
+</div>
+
+<h2 id="how-it-works">How It Works</h2>
+<p>If you would like to know more about how the brushed motor works, this video explains all of the details.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/GQatiB-JHdI?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+
+</article>
+
+      </div>
+      <footer class="bottom-of-page">
+        
+        <div class="prev-next">
+          <div><a href="/03-brushed-motors/">← Brushed Motors</a></div>
+          <div><a href="/03-brushed-motors/02-speed-and-direction/">Speed and Direction →</a></div>
+        </div>
+        
+        <div class="footer-bottom">
+          <div class="copyright">
+            &copy; 2026 <a href="https://www.jointheleague.org">Motors Clinic</a>
+          </div>
+          <div class="footer-credits">
+            Igniting Young Minds Through Coding
+          </div>
+          
+          <div class="footer-instructor" id="instructor-toggle" style="display:none;">
+            <button type="button" title="Instructor Guide" aria-label="Toggle instructor guide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="instructor-guide-panel" id="instructor-panel" style="display:none;">
+          <div class="instructor-guide-panel-header">
+            <strong>Instructor Guide</strong>
+            <button type="button" id="instructor-close" aria-label="Close">✕</button>
+          </div>
+          <div class="instructor-guide-panel-body" id="instructor-body"></div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
+  (function() {
+    var sections = document.querySelectorAll('.instructor-guide-section');
+    if (!sections.length) return;
+    var toggle = document.getElementById('instructor-toggle');
+    var panel = document.getElementById('instructor-panel');
+    var body = document.getElementById('instructor-body');
+    var close = document.getElementById('instructor-close');
+    toggle.style.display = '';
+    sections.forEach(function(s) {
+      body.innerHTML += s.innerHTML;
+      s.remove();
+    });
+    toggle.querySelector('button').addEventListener('click', function() {
+      panel.style.display = panel.style.display === 'none' ? '' : 'none';
+    });
+    close.addEventListener('click', function() {
+      panel.style.display = 'none';
+    });
+  })();
+  </script>
+</body>
+</html>

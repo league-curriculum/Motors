@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Brushed Motors on Motors Clinic</title>
+    <link>/03-brushed-motors/</link>
+    <description>Recent content in Brushed Motors on Motors Clinic</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="/03-brushed-motors/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>H-Bridge Wiring</title>
+      <link>/03-brushed-motors/01-h-bridge-wiring/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/03-brushed-motors/01-h-bridge-wiring/</guid>
+      <description>&lt;div class=&#34;instructor-guide-section&#34; style=&#34;display:none;&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;Objectives:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Students will explain how an H-Bridge circuit controls motor direction by switching current flow&lt;/li&gt;&#xA;&lt;li&gt;Students will correctly wire an H-Bridge driver board to a Micro:bit breakout board&lt;/li&gt;&#xA;&lt;li&gt;Students will follow the safe power-up and power-down sequence for the H-Bridge&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Materials:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1 Micro:bit with USB cable per student&lt;/li&gt;&#xA;&lt;li&gt;1 breakout board per student&lt;/li&gt;&#xA;&lt;li&gt;1 L9110 H-Bridge driver board per student&lt;/li&gt;&#xA;&lt;li&gt;1 small brushed DC motor per student&lt;/li&gt;&#xA;&lt;li&gt;4 Dupont wires per student (male-to-male or male-to-female as needed)&lt;/li&gt;&#xA;&lt;li&gt;Breadboard for making connections (optional)&lt;/li&gt;&#xA;&lt;li&gt;Battery pack with USB cable&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Timing:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Speed and Direction</title>
+      <link>/03-brushed-motors/02-speed-and-direction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/03-brushed-motors/02-speed-and-direction/</guid>
+      <description>&lt;div class=&#34;instructor-guide-section&#34; style=&#34;display:none;&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;Objectives:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Students will write a MakeCode program that controls motor direction using buttons&lt;/li&gt;&#xA;&lt;li&gt;Students will use &lt;code&gt;analog write&lt;/code&gt; to control motor speed with a variable duty cycle&lt;/li&gt;&#xA;&lt;li&gt;Students will explain the relationship between duty cycle and motor speed&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Materials:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1 Micro:bit with USB cable per student&lt;/li&gt;&#xA;&lt;li&gt;1 breakout board per student&lt;/li&gt;&#xA;&lt;li&gt;1 L9110 H-Bridge driver board (already wired from previous lesson)&lt;/li&gt;&#xA;&lt;li&gt;1 small brushed DC motor (already connected)&lt;/li&gt;&#xA;&lt;li&gt;Battery pack with USB cable&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Timing:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

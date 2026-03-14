@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Signals and Power on Motors Clinic</title>
+    <link>/02-signals-and-power/</link>
+    <description>Recent content in Signals and Power on Motors Clinic</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="/02-signals-and-power/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Voltage and PWM</title>
+      <link>/02-signals-and-power/01-voltage-and-pwm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/02-signals-and-power/01-voltage-and-pwm/</guid>
+      <description>&lt;div class=&#34;instructor-guide-section&#34; style=&#34;display:none;&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;Objectives:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Explain what a signal is in the context of electronics&lt;/li&gt;&#xA;&lt;li&gt;Describe how voltage can be used to convey information&lt;/li&gt;&#xA;&lt;li&gt;Write a MakeCode program that uses &lt;code&gt;analog write&lt;/code&gt; to generate a PWM signal on pin P0&lt;/li&gt;&#xA;&lt;li&gt;Identify the three types of power connections: positive, negative, and ground&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Materials:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1 Micro:bit per student (already set up from previous lesson)&lt;/li&gt;&#xA;&lt;li&gt;1 short USB cable per student&lt;/li&gt;&#xA;&lt;li&gt;1 computer with Chrome browser per student&lt;/li&gt;&#xA;&lt;li&gt;1 breakout board per student&lt;/li&gt;&#xA;&lt;li&gt;1 long USB cable per student&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Timing:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Oscilloscope</title>
+      <link>/02-signals-and-power/02-oscilloscope/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/02-signals-and-power/02-oscilloscope/</guid>
+      <description>&lt;div class=&#34;instructor-guide-section&#34; style=&#34;display:none;&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;Objectives:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Connect an oscilloscope to the Micro:bit breakout board to measure a signal&lt;/li&gt;&#xA;&lt;li&gt;Read an oscilloscope trace and identify voltage, frequency, and duty cycle&lt;/li&gt;&#xA;&lt;li&gt;Modify a program to change the duty cycle of a PWM signal&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Materials:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1 Micro:bit with breakout board per student (set up from previous lesson)&lt;/li&gt;&#xA;&lt;li&gt;2 Dupont wires per student&lt;/li&gt;&#xA;&lt;li&gt;1 digital oscilloscope per 2-3 students (shared)&lt;/li&gt;&#xA;&lt;li&gt;Alligator clip cables (attached to oscilloscope probes)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Timing:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;5 min: Demonstrate how to connect the oscilloscope to the breakout board&lt;/li&gt;&#xA;&lt;li&gt;5 min: Students connect their own oscilloscopes and run the analog write program&lt;/li&gt;&#xA;&lt;li&gt;5 min: Explain how to read the oscilloscope trace (voltage, duty cycle)&lt;/li&gt;&#xA;&lt;li&gt;10 min: Students switch to Python mode and enter the variable duty cycle program&lt;/li&gt;&#xA;&lt;li&gt;5 min: Students observe the changing duty cycle on the oscilloscope and discuss&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Key Concepts:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

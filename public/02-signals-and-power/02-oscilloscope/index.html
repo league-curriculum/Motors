@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oscilloscope — Motors Clinic</title>
+  
+  <style>/* ── Furo-inspired theme for League curricula ────────────────── */
+/* Adapted from Sphinx Furo theme (MIT) to match Motors Clinic   */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Furo light-theme colors */
+  --color-foreground-primary: #000;
+  --color-foreground-secondary: #5a5c63;
+  --color-foreground-muted: #72747e;
+  --color-foreground-border: #878787;
+  --color-background-primary: #fff;
+  --color-background-secondary: #f8f9fb;
+  --color-background-hover: #efeff4;
+  --color-background-border: #eeebee;
+  --color-brand-primary: #0a4bff;
+  --color-brand-content: #2757dd;
+  --color-link: #2757dd;
+  --color-link-visited: #872ee0;
+  --color-inline-code-background: rgba(0,0,0,.06);
+  --color-table-header-background: var(--color-background-secondary);
+  --color-admonition-background: transparent;
+
+  /* Layout */
+  --sidebar-width: 15em;
+  --content-width: 46em;
+  --content-padding: 3em;
+
+  /* Typography */
+  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-stack--monospace: SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --font-size--normal: 100%;
+  --font-size--small: 87.5%;
+
+  /* Sidebar */
+  --sidebar-item-line-height: 1rem;
+  --sidebar-item-spacing-vertical: .5rem;
+  --sidebar-item-spacing-horizontal: 1rem;
+  --sidebar-item-height: calc(var(--sidebar-item-line-height) + 2 * var(--sidebar-item-spacing-vertical));
+}
+
+html {
+  font-size: var(--font-size--normal);
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-stack);
+  color: var(--color-foreground-primary);
+  background: var(--color-background-primary);
+  line-height: 1.5;
+}
+
+/* ── Page layout (Furo .page) ────────────────────────────────── */
+.page {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar (Furo .sidebar-drawer) ──────────────────────────── */
+.sidebar-drawer {
+  width: calc(50% - 26em);
+  min-width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: var(--color-background-secondary);
+  border-right: 1px solid var(--color-background-border);
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar-container {
+  width: var(--sidebar-width);
+  padding: 1.5rem 0;
+  margin-left: auto;
+}
+
+/* Brand / logo */
+.sidebar-brand {
+  display: block;
+  text-decoration: none;
+  color: var(--color-foreground-primary);
+  padding-bottom: 1rem;
+}
+
+.sidebar-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sidebar-brand-text {
+  display: block;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0.75rem var(--sidebar-item-spacing-horizontal) 0;
+}
+
+/* Sidebar navigation tree */
+.sidebar-tree ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-tree li {
+  margin: 0;
+  position: relative;
+}
+
+.sidebar-tree .caption {
+  font-weight: 700;
+  font-size: var(--font-size--small);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-foreground-muted);
+  padding: 1rem var(--sidebar-item-spacing-horizontal) 0.25rem;
+}
+
+.sidebar-tree a {
+  display: block;
+  padding: var(--sidebar-item-spacing-vertical) var(--sidebar-item-spacing-horizontal);
+  color: var(--color-foreground-secondary);
+  text-decoration: none;
+  font-size: var(--font-size--small);
+  line-height: var(--sidebar-item-line-height);
+}
+
+.sidebar-tree a:hover {
+  color: var(--color-foreground-primary);
+  background: var(--color-background-hover);
+}
+
+.sidebar-tree .current > a {
+  font-weight: 700;
+  color: var(--color-brand-primary);
+}
+
+.sidebar-tree ul ul {
+  padding-left: var(--sidebar-item-spacing-horizontal);
+}
+
+/* ── Main content area ───────────────────────────────────────── */
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  max-width: var(--content-width);
+  padding: 2rem var(--content-padding);
+  margin: 0;
+  flex: 1;
+}
+
+/* ── Typography ──────────────────────────────────────────────── */
+.content h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.content h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-background-border);
+  padding-bottom: 0.3rem;
+}
+
+.content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.content p {
+  margin-bottom: 0.75rem;
+}
+
+.content ul, .content ol {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+}
+
+.content li {
+  margin-bottom: 0.25rem;
+}
+
+.content li > p {
+  margin-bottom: 0.25rem;
+}
+
+.content a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+.content a:visited {
+  color: var(--color-link-visited);
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.content blockquote {
+  border-left: 3px solid var(--color-foreground-border);
+  padding-left: 1rem;
+  margin: 0.75rem 0;
+  color: var(--color-foreground-secondary);
+}
+
+/* ── Code ────────────────────────────────────────────────────── */
+.content code {
+  background: var(--color-inline-code-background);
+  padding: 0.1em 0.3em;
+  border-radius: 0.2rem;
+  font-size: 0.875em;
+  font-family: var(--font-stack--monospace);
+}
+
+.content pre {
+  background: var(--color-inline-code-background);
+  border-radius: 0.2rem;
+  padding: 0.625rem 0.875rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.content pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.8125rem;
+}
+
+/* ── Tables (Furo style) ─────────────────────────────────────── */
+.content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.content th, .content td {
+  border: 1px solid var(--color-background-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.content th {
+  background: var(--color-table-header-background);
+  font-weight: 700;
+}
+
+/* ── Admonitions / Callouts (Furo style) ─────────────────────── */
+.callout {
+  margin: 1rem 0;
+  padding: 0;
+  border-left: 0.2rem solid var(--color-brand-primary);
+  background: var(--color-admonition-background);
+}
+
+.callout-title {
+  font-weight: 700;
+  padding: 0.5rem 0.75rem;
+  background: rgba(10, 75, 255, 0.1);
+}
+
+.callout-body {
+  padding: 0.5rem 0.75rem;
+}
+
+.callout-info { border-left-color: #0a4bff; }
+.callout-info .callout-title { background: rgba(10, 75, 255, 0.1); }
+
+.callout-warning { border-left-color: #e65100; }
+.callout-warning .callout-title { background: rgba(230, 81, 0, 0.1); }
+
+.callout-tip { border-left-color: #00897b; }
+.callout-tip .callout-title { background: rgba(0, 137, 123, 0.1); }
+
+.callout-danger { border-left-color: #d32f2f; }
+.callout-danger .callout-title { background: rgba(211, 47, 47, 0.1); }
+
+/* ── Instructor Guide ────────────────────────────────────────── */
+.instructor-guide {
+  margin: 1.5rem 0;
+  border: 2px solid #bf8700;
+  border-radius: 0.2rem;
+  background: #fffbeb;
+}
+
+.instructor-guide summary {
+  padding: 0.5rem 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.instructor-guide[open] summary {
+  border-bottom: 1px solid #bf8700;
+}
+
+.instructor-guide-content {
+  padding: 0.75rem 1rem;
+}
+
+/* ── Sidebar nav buttons ─────────────────────────────────────── */
+.sidebar-nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem var(--sidebar-item-spacing-horizontal);
+  border-top: 1px solid var(--color-background-border);
+  margin-top: 0.5rem;
+}
+
+.sidebar-nav-prev,
+.sidebar-nav-next {
+  font-size: var(--font-size--small);
+  color: var(--color-brand-content);
+  text-decoration: none;
+}
+
+.sidebar-nav-prev:hover,
+.sidebar-nav-next:hover {
+  text-decoration: underline;
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.bottom-of-page {
+  border-top: 1px solid var(--color-background-border);
+  padding: 1rem var(--content-padding);
+  max-width: var(--content-width);
+}
+
+.prev-next {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-background-border);
+}
+
+.prev-next a {
+  color: var(--color-brand-content);
+  text-decoration: none;
+  font-size: var(--font-size--small);
+}
+
+.prev-next a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--color-foreground-muted);
+}
+
+.footer-bottom a {
+  color: var(--color-foreground-muted);
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: var(--color-brand-content);
+}
+
+.footer-credits {
+  flex: 1;
+}
+
+.footer-github {
+  margin-left: auto;
+}
+
+.footer-github svg {
+  vertical-align: middle;
+}
+
+/* ── Breadcrumb ──────────────────────────────────────────────── */
+.breadcrumb {
+  font-size: var(--font-size--small);
+  color: var(--color-foreground-muted);
+  margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+  color: var(--color-foreground-muted);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-brand-content);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 67em) {
+  .content { padding: 2rem 1.5rem; }
+  .bottom-of-page { padding: 1rem 1.5rem; }
+}
+
+@media (max-width: 63em) {
+  .page { flex-direction: column; }
+  .sidebar-drawer {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--color-background-border);
+  }
+  .sidebar-container {
+    width: 100%;
+    padding: 0.75rem 0;
+    margin: 0;
+  }
+  .sidebar-brand { padding-bottom: 0.75rem; }
+}
+</style>
+  
+  <style>/* Instructor Guide — hidden sections collected into footer panel */
+.instructor-guide-section {
+  display: none;
+}
+
+/* Footer icon button */
+.footer-instructor button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-foreground-muted);
+  padding: 0;
+  line-height: 1;
+}
+
+.footer-instructor button:hover {
+  color: var(--color-brand-content);
+}
+
+/* Slide-up panel */
+.instructor-guide-panel {
+  border-top: 2px solid #bf8700;
+  background: #fffbeb;
+  padding: 0;
+  margin-top: 0.75rem;
+}
+
+.instructor-guide-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.875rem;
+}
+
+.instructor-guide-panel-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #92400e;
+  line-height: 1;
+}
+
+.instructor-guide-panel-body {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.instructor-guide-panel-body p {
+  margin-bottom: 0.5rem;
+}
+
+/* Callout boxes */
+.callout {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-left: 4px solid #0969da;
+  border-radius: 4px;
+  background: #f6f8fa;
+}
+
+.callout-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.callout-info {
+  border-left-color: #0969da;
+}
+
+.callout-warning {
+  border-left-color: #d1242f;
+  background: #fff5f5;
+}
+
+.callout-tip {
+  border-left-color: #1a7f37;
+  background: #f0fff4;
+}
+</style>
+  
+  <style>/* Module-level nav items: bold, slightly larger */
+.sidebar-module > .sidebar-module-link {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-foreground-primary);
+  padding-top: 0.75rem;
+}
+
+.sidebar-module:first-child > .sidebar-module-link {
+  padding-top: 0.5rem;
+}
+
+/* Lesson items: smaller, indented */
+.sidebar-lessons {
+  padding-left: 1rem !important;
+}
+
+.sidebar-lessons a {
+  font-size: var(--font-size--small);
+}
+</style>
+  
+</head>
+<body>
+  
+  
+  
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+      
+    
+  
+    
+    
+      
+    
+  
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+      
+        
+      
+      
+        
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  
+
+  <div class="page">
+    <aside class="sidebar-drawer">
+      <div class="sidebar-container">
+        <a href="/" class="sidebar-brand">
+          <img src="https://images.jointheleague.org/logos/logo4.png" alt="League logo" class="sidebar-logo">
+          <span class="sidebar-brand-text">Motors Clinic</span>
+        </a>
+        <nav class="sidebar-tree">
+          <ul>
+            
+            
+            
+            <li class="sidebar-module">
+              <a href="/01-getting-started/" class="sidebar-module-link">Getting Started</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/01-getting-started/01-kit-contents/">Kit Contents</a>
+                </li>
+                
+                <li>
+                  <a href="/01-getting-started/02-microbit-setup/">Micro:bit Setup</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/02-signals-and-power/" class="sidebar-module-link">Signals and Power</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/02-signals-and-power/01-voltage-and-pwm/">Voltage and PWM</a>
+                </li>
+                
+                <li class="current">
+                  <a href="/02-signals-and-power/02-oscilloscope/">Oscilloscope</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/03-brushed-motors/" class="sidebar-module-link">Brushed Motors</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/03-brushed-motors/01-h-bridge-wiring/">H-Bridge Wiring</a>
+                </li>
+                
+                <li>
+                  <a href="/03-brushed-motors/02-speed-and-direction/">Speed and Direction</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/04-hobby-servos/" class="sidebar-module-link">Hobby Servos</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/04-hobby-servos/01-servo-wiring/">Servo Wiring</a>
+                </li>
+                
+                <li>
+                  <a href="/04-hobby-servos/02-sweep-programs/">Sweep Programs</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/05-steppers/" class="sidebar-module-link">Stepper Motors</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/05-steppers/01-stepper-wiring/">Stepper Wiring</a>
+                </li>
+                
+                <li>
+                  <a href="/05-steppers/02-coil-sequencing/">Coil Sequencing</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="sidebar-module">
+              <a href="/06-wrap-up/" class="sidebar-module-link">Wrap-Up</a>
+              
+              
+              <ul class="sidebar-lessons">
+                
+                <li>
+                  <a href="/06-wrap-up/01-motor-comparison/">Motor Comparison</a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            
+          </ul>
+        </nav>
+        <div class="sidebar-nav-buttons">
+          <a href="/02-signals-and-power/01-voltage-and-pwm/" class="sidebar-nav-prev">← Previous</a>
+          <a href="/03-brushed-motors/" class="sidebar-nav-next">Next →</a>
+        </div>
+      </div>
+    </aside>
+    <div class="main">
+      <div class="content">
+        
+<nav class="breadcrumb">
+  <a href="/">Home</a>
+  
+  / <a href="/02-signals-and-power/">Signals and Power</a>
+  
+  / <span>Oscilloscope</span>
+</nav>
+<article>
+  <h1>Oscilloscope</h1>
+  <div class="instructor-guide-section" style="display:none;">
+  <p><strong>Objectives:</strong></p>
+<ul>
+<li>Connect an oscilloscope to the Micro:bit breakout board to measure a signal</li>
+<li>Read an oscilloscope trace and identify voltage, frequency, and duty cycle</li>
+<li>Modify a program to change the duty cycle of a PWM signal</li>
+</ul>
+<p><strong>Materials:</strong></p>
+<ul>
+<li>1 Micro:bit with breakout board per student (set up from previous lesson)</li>
+<li>2 Dupont wires per student</li>
+<li>1 digital oscilloscope per 2-3 students (shared)</li>
+<li>Alligator clip cables (attached to oscilloscope probes)</li>
+</ul>
+<p><strong>Timing:</strong></p>
+<ul>
+<li>5 min: Demonstrate how to connect the oscilloscope to the breakout board</li>
+<li>5 min: Students connect their own oscilloscopes and run the analog write program</li>
+<li>5 min: Explain how to read the oscilloscope trace (voltage, duty cycle)</li>
+<li>10 min: Students switch to Python mode and enter the variable duty cycle program</li>
+<li>5 min: Students observe the changing duty cycle on the oscilloscope and discuss</li>
+</ul>
+<p><strong>Key Concepts:</strong></p>
+<ul>
+<li>An oscilloscope shows how voltage changes over time</li>
+<li>The duty cycle is the percentage of time a signal is at high voltage</li>
+<li>An analog write value of 512 produces a 50% duty cycle (512 is half of 1024)</li>
+<li>A square wave rapidly switches between 0V and 3.3V; this is the basis of PWM motor control</li>
+</ul>
+<p><strong>Common Mistakes:</strong></p>
+<ul>
+<li>Connecting alligator clips to the wrong pins (red should go to yellow/signal, black to black/ground)</li>
+<li>Forgetting to press the &ldquo;Auto&rdquo; button on the oscilloscope to calibrate the display</li>
+<li>When switching to Python mode, accidentally deleting the entire program instead of editing it</li>
+<li>Confusing the oscilloscope probe connections: the signal clips to the yellow pin, ground clips to black</li>
+</ul>
+<p><strong>Assessment Cues:</strong></p>
+<ul>
+<li>Students can point to the oscilloscope screen and identify the high voltage (3.3V) and low voltage (0V)</li>
+<li>Students can explain what &ldquo;50% duty cycle&rdquo; means in their own words</li>
+<li>The variable duty cycle program runs and students can see the signal changing on the oscilloscope</li>
+</ul>
+<p><strong>Differentiation:</strong></p>
+<ul>
+<li>Struggling: Provide a labeled diagram of the oscilloscope connections; pair with a student who has a working setup</li>
+<li>Advanced: Have students calculate the exact duty cycle for specific analog write values and verify with the oscilloscope reading</li>
+</ul>
+
+</div>
+
+<h2 id="connecting-the-oscilloscope">Connecting the Oscilloscope</h2>
+<p>Now let&rsquo;s connect the oscilloscope to see the signal your program is generating. Connect two Dupont wires (with the black square ends) to the P0 signal (yellow) and P0 ground (black) pins on the breakout board. Then connect the alligator clips to the other end of the Dupont wires, and plug the alligator clips into the oscilloscope.</p>
+<p>After you make these connections, trace the black alligator clip through the Dupont wire to the black P0 pin, and trace the red alligator clip through the Dupont wire to the yellow P0 pin.</p>
+<p><img src="../images/oscope_connection.png" alt="Oscilloscope connection to breakout board"></p>
+<div class="callout callout-warning">
+  <div class="callout-title">Warning</div>
+  <div class="callout-content">
+    Double-check your connections: the red/signal alligator clip goes to the yellow (signal) pin, and the black/ground alligator clip goes to the black (ground) pin. Reversing them will not damage anything, but you will not see a signal.
+  </div>
+</div>
+
+<h2 id="reading-the-oscilloscope-trace">Reading the Oscilloscope Trace</h2>
+<p>Follow these steps:</p>
+<ol>
+<li>Turn on the oscilloscope</li>
+<li>Download and run your analog write program</li>
+<li>Press the <strong>Auto</strong> button on the oscilloscope</li>
+</ol>
+<p>When you run the program and look at the signal, this is what you will see:</p>
+<p><img src="../images/50_duty_trace.png" alt="50% duty cycle trace on oscilloscope"></p>
+<p>The yellow line that goes up and down is the voltage on the P0 pin of the Micro:bit. The bottom of the line is at 0 volts, and the top is at about 3.3V. You can see these voltages in the white text in the background for Vmax and Vmin.</p>
+<p>The &ldquo;Dut&rdquo; text in the background is the <strong>duty cycle</strong>, which is the percentage of time that the signal is at a high voltage. It should be 50%, because the value we set in the program (512) is 50% of the way between the minimum analog value of 0 and the maximum value of 1024.</p>
+<p>We will be using this signal, called a <strong>square wave</strong>, for controlling the motors.</p>
+<div class="callout callout-tip">
+  <div class="callout-title">Tip</div>
+  <div class="callout-content">
+    Think of duty cycle like this: if the signal is high 50% of the time, the motor gets about 50% of the available power. A 25% duty cycle means the motor gets about 25% of the power and runs slower.
+  </div>
+</div>
+
+<h2 id="changing-the-duty-cycle">Changing the Duty Cycle</h2>
+<p>Unlike the steady signal on our oscilloscope, the duty cycle of a motor control signal will change to adjust the speed or position of the motor. Let&rsquo;s update our program to change the signal.</p>
+<p>Switch your program to <strong>Python mode</strong> using the toggle at the top of the screen, then edit the program to this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_forever</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> index <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>):
+</span></span><span style="display:flex;"><span>        pins<span style="color:#f92672">.</span>analog_write_pin(AnalogPin<span style="color:#f92672">.</span>P0, index)
+</span></span><span style="display:flex;"><span>        basic<span style="color:#f92672">.</span>pause(<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>basic<span style="color:#f92672">.</span>forever(on_forever)
+</span></span></code></pre></div><p>After making this change, you will see the duty cycle change from 0% to 100%.</p>
+<p>Watch the oscilloscope trace as the program runs. You should see the square wave getting wider (more time at high voltage) as the duty cycle increases.</p>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ul>
+<li><strong>No trace on the oscilloscope:</strong> Press the &ldquo;Auto&rdquo; button. If that does not work, check that the alligator clips are firmly attached to the Dupont wires.</li>
+<li><strong>Flat line on the oscilloscope:</strong> Your program may not be running. Re-download it to the Micro:bit.</li>
+<li><strong>Duty cycle reads 0% or 100% and does not change:</strong> Make sure you entered the Python program exactly as shown. Check that <code>range(5)</code> and the <code>basic.pause(10)</code> are correct.</li>
+</ul>
+<h3 id="challenge">Challenge</h3>
+<p>Modify the Python program to sweep the duty cycle in both directions: from 0% up to 100%, and then back down from 100% to 0%. What would the oscilloscope trace look like?</p>
+
+</article>
+
+      </div>
+      <footer class="bottom-of-page">
+        
+        <div class="prev-next">
+          <div><a href="/02-signals-and-power/01-voltage-and-pwm/">← Voltage and PWM</a></div>
+          <div><a href="/03-brushed-motors/">Brushed Motors →</a></div>
+        </div>
+        
+        <div class="footer-bottom">
+          <div class="copyright">
+            &copy; 2026 <a href="https://www.jointheleague.org">Motors Clinic</a>
+          </div>
+          <div class="footer-credits">
+            Igniting Young Minds Through Coding
+          </div>
+          
+          <div class="footer-instructor" id="instructor-toggle" style="display:none;">
+            <button type="button" title="Instructor Guide" aria-label="Toggle instructor guide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="instructor-guide-panel" id="instructor-panel" style="display:none;">
+          <div class="instructor-guide-panel-header">
+            <strong>Instructor Guide</strong>
+            <button type="button" id="instructor-close" aria-label="Close">✕</button>
+          </div>
+          <div class="instructor-guide-panel-body" id="instructor-body"></div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
+  (function() {
+    var sections = document.querySelectorAll('.instructor-guide-section');
+    if (!sections.length) return;
+    var toggle = document.getElementById('instructor-toggle');
+    var panel = document.getElementById('instructor-panel');
+    var body = document.getElementById('instructor-body');
+    var close = document.getElementById('instructor-close');
+    toggle.style.display = '';
+    sections.forEach(function(s) {
+      body.innerHTML += s.innerHTML;
+      s.remove();
+    });
+    toggle.querySelector('button').addEventListener('click', function() {
+      panel.style.display = panel.style.display === 'none' ? '' : 'none';
+    });
+    close.addEventListener('click', function() {
+      panel.style.display = 'none';
+    });
+  })();
+  </script>
+</body>
+</html>
