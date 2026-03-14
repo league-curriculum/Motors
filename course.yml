@@ -9,6 +9,6 @@ topics: []
 prerequisites: []
 lessons: 0
 estimated_weeks: 0
-curriculum_url: https://curriculum.jointheleague.org/motors/
-repo_url: https://github.com/league-curriculum/motors
+curriculum_url: https://curriculum.jointheleague.org/Motors/
+repo_url: https://github.com/league-curriculum/Motors
 description: A hands-on tech club session where you learn to program a BBC Micro:bit to control electric motors.
