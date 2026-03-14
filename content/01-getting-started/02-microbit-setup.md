@@ -60,11 +60,11 @@ Using the **Chrome or Chromium browser**, visit the Micro:bit MakeCode project w
 
 [https://makecode.microbit.org](https://makecode.microbit.org)
 
-First, click on the ![Sign In](../images/sign_in.png) button in the upper-right corner to create an account.
+First, click on the <img src="../images/sign_in.png" class="inline" alt="Sign In"> button in the upper-right corner to create an account.
 
 ## Importing Your First Program
 
-To load your first program, click on the Import button: ![Import](../images/import_button.png)
+To load your first program, click on the Import button: <img src="../images/import_button.png" class="inline" alt="Import">
 
 In the import window, click on the middle box, "Import URL...."
 

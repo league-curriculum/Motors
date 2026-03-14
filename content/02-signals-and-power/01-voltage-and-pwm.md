@@ -98,7 +98,7 @@ The ground connection is called "ground" because it is literally connected to a 
 
 ## Writing the Analog Write Program
 
-Using the [MakeCode Editor](https://makecode.microbit.org), write this program. If you are still editing the old program, click ![Micro:bit](../images/microbit.png) to go back to the main screen, then click **+ New Project** to start a new project. Call the project something like "Analog Write" or "Signals."
+Using the [MakeCode Editor](https://makecode.microbit.org), write this program. If you are still editing the old program, click <img src="../images/microbit.png" class="inline" alt="Micro:bit"> to go back to the main screen, then click **+ New Project** to start a new project. Call the project something like "Analog Write" or "Signals."
 
 The `analog write` block is in the **Advanced >> Pins** section of the block menu.
 

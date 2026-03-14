@@ -18,3 +18,11 @@
 .sidebar-lessons a {
   font-size: var(--font-size--small);
 }
+
+/* Inline images within paragraph text (e.g. button icons) */
+.content img.inline {
+  height: 1.2em;
+  vertical-align: text-bottom;
+  display: inline;
+  border-radius: 0;
+}
