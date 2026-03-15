@@ -17,6 +17,7 @@ theme = "curriculum-hugo-theme"
     endLevel = 3
 
 [params]
+  curriculum_version = "0.20260314.1"
   instructorGuide = true
   github_repo = "https://github.com/league-curriculum/Motors"
 
