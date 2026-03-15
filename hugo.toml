@@ -1,6 +1,7 @@
 baseURL = "https://league-curriculum.github.io/Motors/"
 title = "Motors Clinic"
 theme = "curriculum-hugo-theme"
+enableEmoji = true
 
 [markup]
   [markup.goldmark.renderer]
@@ -14,10 +15,12 @@ theme = "curriculum-hugo-theme"
     lineNos = false
   [markup.tableOfContents]
     startLevel = 2
-    endLevel = 3
+    endLevel = 4
 
 [params]
-  curriculum_version = "0.20260314.2"
+  copyright = "The League of Amazing Programmers"
+  license = "CC BY-NC 4.0"
+  curriculum_version = "0.20260314.3"
+  curik_version = "0.20260314.11"
   instructorGuide = true
   github_repo = "https://github.com/league-curriculum/Motors"
-
